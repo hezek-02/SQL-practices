@@ -1,4 +1,4 @@
-SELECT rasp.hotel_codigo, 
+CREATE VIEW reservas AS SELECT rasp.hotel_codigo, 
 	rasp.nro_habitacion, 
 	cliente_documento, 
 	fecha_reserva, 
@@ -32,3 +32,25 @@ Nota: Una vez definida, la vista en SQL se trabaja en las consultas como una tab
 Usando esta consulta, definir una vista con el nombre reservas y los atributos que se detallan en el
 esquema resultado
 */costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche)
+SELECT rasp.hotel_codigo, 
+	rasp.nro_habitacion, 
+	cliente_documento, 
+	fecha_reserva, 
+	check_in,
+	check_out, 
+	precio_noche 
+	FROM
+		reservas_anteriores_sin_precio rasp JOIN costos_habitacion ch 
+		ON 
+			rasp.nro_habitacion = ch.nro_habitacion AND 
+			rasp.hotel_codigo = ch.hotel_codigo 
+		WHERE ch.fecha_desde = (
+		SELECT 
+			MAX(fecha_desde)
+			FROM
+				costos_habitacion ch2 
+				WHERE
+					rasp.nro_habitacion = ch2.nro_habitacion AND 
+					rasp.hotel_codigo = ch2.hotel_codigo AND 
+					ch2.fecha_desde <= rasp.check_in
+			)
