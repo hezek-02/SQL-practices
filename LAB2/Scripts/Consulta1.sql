@@ -8,3 +8,5 @@ SELECT  hotel_codigo, h.nombre FROM
 		p.continente_codigo = 'EU' AND 
 		p.pais_codigo = c.pais_codigo; 
 
+
+

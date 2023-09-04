@@ -1,4 +1,4 @@
---PREGUNTAR SI CAMBIAR POR NATURAL JOIN(el mismo cliente que realiza la reserva, figura la estadia)
+--OPC1
 CREATE VIEW  reservas_anteriores_sin_precio AS SELECT 
 	ra.hotel_codigo,
 	ra.nro_habitacion,
@@ -19,6 +19,43 @@ CREATE VIEW  reservas_anteriores_sin_precio AS SELECT
 				ea.nro_habitacion=ra2.nro_habitacion AND 
 				ra2.fecha_reserva> ra.fecha_reserva
 			)
+
+--OPC2
+CREATE VIEW  reservas_anteriores_sin_precio AS SELECT 
+	ra.hotel_codigo,
+	ra.nro_habitacion,
+	ra.cliente_documento, 
+	ra.fecha_reserva, 
+	ra.check_in, 
+	check_out
+	FROM
+	estadias_anteriores ea NATURAL JOIN reservas_anteriores ra WHERE 
+		NOT EXISTS (
+			SELECT ra2.hotel_codigo,ra2.nro_habitacion,ra2.fecha_reserva FROM reservas_anteriores ra2 
+			WHERE
+				ra2.hotel_codigo =ea.hotel_codigo AND 
+				ea.nro_habitacion=ra2.nro_habitacion AND 
+				ra2.fecha_reserva> ra.fecha_reserva
+			)
+			
+--PREGUNTAR SI CAMBIAR POR NATURAL JOIN(el mismo cliente que realiza la reserva, figura la estadia)
+SELECT  
+	ra.hotel_codigo,
+	ra.nro_habitacion,
+	ra.cliente_documento, 
+	ra.fecha_reserva, 
+	ra.check_in, 
+	check_out
+	FROM
+	estadias_anteriores ea NATURAL JOIN reservas_anteriores ra WHERE
+		NOT EXISTS (
+			SELECT ra2.hotel_codigo,ra2.nro_habitacion,ra2.fecha_reserva FROM reservas_anteriores ra2 
+			WHERE
+				ra2.hotel_codigo =ea.hotel_codigo AND 
+				ea.nro_habitacion=ra2.nro_habitacion AND 
+				ra2.fecha_reserva> ra.fecha_reserva
+			)
+
 
 --Se ve los datos repetidos elimnados
 SELECT * FROM reservas_anteriores ra WHERE hotel_codigo IN (6461828,6463689);
