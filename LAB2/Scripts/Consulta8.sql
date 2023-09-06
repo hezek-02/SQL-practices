@@ -9,7 +9,7 @@ SELECT cl.cliente_documento, CONCAT(cl.nombre, ' ', cl.apellido) AS nombre_compl
 	    	paises p,
 	    	estadias e NATURAL JOIN hoteles h 
 	   	 	WHERE 
-	    	(h.pais_codigo = p.pais_codigo OR p.pais_codigo = cl.pais_codigo)  AND
+	    	h.pais_codigo = p.pais_codigo  AND
 	    	e.cliente_documento = cl.cliente_documento
 		)
 	);
