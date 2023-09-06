@@ -96,19 +96,23 @@ CREATE VIEW  reservas_anteriores_sin_precio AS SELECT
 				ra2.fecha_reserva > ra.fecha_reserva
 			)
 			
-			
+81449752	2020-02-17	2022-12-22
+81449752	2023-02-17	2012-12-22
+7861038	    2023-02-17	2013-12-22
+51080025	2023-02-17	2013-12-22
+96777620	2038-02-17	2013-12-22			
 SELECT * FROM reservas_anteriores ra WHERE nro_habitacion=69
 SELECT * FROM estadias_anteriores ea WHERE nro_habitacion=69
 SELECT * FROM reservas r WHERE nro_habitacion=69
 SELECT * FROM estadias e  WHERE nro_habitacion=69
+
 SELECT 
 	ea.hotel_codigo, 
 	ea.nro_habitacion, 
 	ea.cliente_documento, 
 	ea.check_in 
 	FROM
-		estadias_anteriores ea NATURAL JOIN reservas_anteriores ra
-	 WHERE ra.nro_habitacion=69
+		estadias_anteriores ea NATURAL JOIN reservas_anteriores ra WHERE ea.nro_habitacion=69
 		
 SELECT * FROM clientes c 
 INSERT INTO reservas_anteriores (hotel_codigo, nro_habitacion, cliente_documento, fecha_reserva, check_in) VALUES(1, 69, 81449752, '2027-02-02', '2023-02-17');
