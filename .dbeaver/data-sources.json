@@ -32,7 +32,6 @@
 					"postgresql.dd.tag.string": "false"
 				},
 				"auth-model": "native",
-				"events": {},
 				"bootstrap": {
 					"defaultCatalog": "lab3_fbd",
 					"defaultSchema": "public"
