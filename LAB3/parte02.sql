@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION ingreso_extra(codhotel INTEGER, OUT tipohab SMALLINT,
 RETURNS SETOF RECORD AS --RECORD es un tipo de dato especial, NO es un nombre
 $$
 BEGIN--Se puede plantear alternativa con FOR IN, y LOOP 
-	RETURN QUERY SELECT tipo_habitacion_codigo, SUM((check_out-check_in)*precio_noche)  FROM
+	RETURN QUERY SELECT tipo_habitacion_codigo, SUM((check_out-check_in)*precio_noche)  FROM--define el record
 		costos_habitacion ch  JOIN habitaciones h ON 
 		h.hotel_codigo = ch.hotel_codigo AND 
 		h.nro_habitacion = ch.nro_habitacion JOIN estadias_anteriores ea ON 
@@ -24,7 +24,7 @@ BEGIN--Se puede plantear alternativa con FOR IN, y LOOP
 				)
 		GROUP BY tipo_habitacion_codigo;
 		
-		RETURN;
+		RETURN;--marca fin y regreso
 END;
 $$ LANGUAGE plpgsql;
 				
