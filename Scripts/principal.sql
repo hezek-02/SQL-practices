@@ -44,3 +44,11 @@ SELECT  ea1.hotel_codigo,ea1.nro_habitacion,ea1.check_in,ea1.check_out  FROM
 		GROUP BY tipo_habitacion_codigo
 		
 SELECT * FROM ingreso_extra(6468804);
+
+--parte03
+CREATE TABLE IF NOT EXISTS resumen (
+    pais_codigo bpchar(2),
+    cant_estrellas int2,--eq smallint
+    total_extra NUMERIC(10,2)
+);
+    

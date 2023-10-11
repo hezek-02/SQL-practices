@@ -1,5 +1,5 @@
 -- Crear la función actividad_cliente
-CREATE OR REPLACE FUNCTION actividad_cliente(codigo CHAR(1), clientedoc INTEGER, anio INTEGER)
+CREATE OR REPLACE FUNCTION actividad_cliente(codigo CHAR(1), clientedoc INTEGER, anio INTEGER,OUT cantidad INTEGER)
 RETURNS INTEGER AS 
 $$--delimita rango de la funcion
 BEGIN
