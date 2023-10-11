@@ -45,7 +45,7 @@ SELECT  ea1.hotel_codigo,ea1.nro_habitacion,ea1.check_in,ea1.check_out  FROM
 		
 SELECT * FROM ingreso_extra(6463689);
 SELECT * FROM ingreso_extra(6463694);
-SELECT * FROM ingreso_extra(6473369);
+SELECT * FROM ingreso_extra(6465286);
 
 SELECT  * FROM paises p 
 
@@ -61,4 +61,4 @@ CREATE TABLE IF NOT EXISTS resumen (
 CALL  generar_reporte();
 
 SELECT * FROM resumen
---DELETE FROM resumen r 
+DELETE FROM resumen r 

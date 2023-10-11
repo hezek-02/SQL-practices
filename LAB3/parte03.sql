@@ -18,8 +18,10 @@ BEGIN
 				FOR hotel IN
 			        SELECT  h.hotel_codigo FROM hoteles h WHERE h.pais_codigo = pais AND h.estrellas = cant_estrellas
 			    LOOP
-			    	SELECT SUM(monto) INTO parcial_extra FROM ingreso_extra(hotel);
-			    	total_extra := total_extra + parcial_extra;
+			    	SELECT SUM(monto) INTO parcial_extra FROM ingreso_extra(hotel);-- si NO posee estadias devuelve NULL
+			    	IF parcial_extra IS NOT NULL THEN
+			    		total_extra := total_extra + parcial_extra;
+			    	END IF;
     			END LOOP;
 			END IF;
 		   	INSERT INTO resumen (pais_codigo, cant_estrellas, total_extra)--insertar los valores
