@@ -4,13 +4,12 @@ RETURNS INTEGER AS $$--delimita rango de la funcion
 DECLARE
     cantidad INTEGER;
 BEGIN
+	cantidad = 0;
     -- Verificar si el cliente existe
     IF NOT EXISTS (SELECT 1 FROM clientes WHERE cliente_documento = clientedoc) THEN
         RAISE NOTICE 'No existe el cliente';
-    END IF;
-
     -- Calcular la cantidad de reservas o estadías según el código
-    IF codigo = 'R' OR codigo = 'r' THEN
+    ELSIF codigo = 'R' OR codigo = 'r' THEN
         SELECT COUNT(*) INTO cantidad
         FROM reservas_anteriores
         WHERE cliente_documento = clientedoc
