@@ -44,10 +44,22 @@ SELECT  ea1.hotel_codigo,ea1.nro_habitacion,ea1.check_in,ea1.check_out  FROM
 		GROUP BY tipo_habitacion_codigo
 		
 SELECT * FROM ingreso_extra(6463689);
-SELECT * FROM ingreso_extra(6463694);
+SELECT * FROM ingreso_extra(6463694);--this
 SELECT * FROM ingreso_extra(6465286);
 
-SELECT  * FROM paises p 
+SELECT  * FROM costos_habitacion ch JOIN estadias_anteriores e ON
+	e.hotel_codigo = ch.hotel_codigo AND 
+	e.nro_habitacion = ch.nro_habitacion 
+	WHERE e.hotel_codigo = 6463694 AND e.check_in >= ch.fecha_desde 
+	AND NOT EXISTS (
+		SELECT 1 FROM 
+			reservas_anteriores ra WHERE
+			e.hotel_codigo = ra.hotel_codigo AND 
+			e.nro_habitacion = ra.nro_habitacion AND 
+			e.check_in = ra.check_in 
+		)
+INSERT INTO public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) VALUES(6463694, 100, '2006-06-11', 15.67, 34.04);
+SELECT * FROM costos_habitacion ch  WHERE hotel_codigo = 6463694 AND nro_habitacion=100  AND fecha_desde ='2006-06-11'
 
 SELECT * FROM	hoteles h
    		WHERE h.pais_codigo = 'AD'
@@ -62,3 +74,9 @@ CALL  generar_reporte();
 
 SELECT * FROM resumen
 DELETE FROM resumen r 
+
+
+
+
+
+
