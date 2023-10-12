@@ -2,7 +2,7 @@
 -- PostgreSQL database cluster dump
 --
 
--- Started on 2023-10-10 01:55:04 -03
+-- Started on 2023-10-12 20:38:09 -03
 
 SET default_transaction_read_only = off;
 
@@ -13,9 +13,7 @@ SET standard_conforming_strings = on;
 -- Roles
 --
 
-CREATE ROLE hezek;
-ALTER ROLE hezek WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS;
-CREATE ROLE postgres;
+ALTER ROLE hezek WITH SUPERUSER INHERIT NOCREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;
 ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS;
 
 --
@@ -46,7 +44,7 @@ ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION
 -- Dumped from database version 15.4 (Ubuntu 15.4-2.pgdg22.04+1)
 -- Dumped by pg_dump version 16.0 (Ubuntu 16.0-1.pgdg22.04+1)
 
--- Started on 2023-10-10 01:55:04 -03
+-- Started on 2023-10-12 20:38:09 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -59,7 +57,7 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
--- Completed on 2023-10-10 01:55:04 -03
+-- Completed on 2023-10-12 20:38:09 -03
 
 --
 -- PostgreSQL database dump complete
@@ -76,7 +74,7 @@ SET row_security = off;
 -- Dumped from database version 15.4 (Ubuntu 15.4-2.pgdg22.04+1)
 -- Dumped by pg_dump version 16.0 (Ubuntu 16.0-1.pgdg22.04+1)
 
--- Started on 2023-10-10 01:55:04 -03
+-- Started on 2023-10-12 20:38:09 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -91,15 +89,10 @@ SET row_security = off;
 
 --
 -- TOC entry 3558 (class 1262 OID 16613)
--- Name: lab2_fbd; Type: DATABASE; Schema: -; Owner: hezek
+-- Name: lab2_fbd; Type: DATABASE; Schema: -; Owner: -
 --
 
-CREATE DATABASE lab2_fbd WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'es_MX.UTF-8';
 
-
-ALTER DATABASE lab2_fbd OWNER TO hezek;
-
-\connect lab2_fbd
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -114,7 +107,7 @@ SET row_security = off;
 
 --
 -- TOC entry 852 (class 1247 OID 16615)
--- Name: t_sexo; Type: TYPE; Schema: public; Owner: hezek
+-- Name: t_sexo; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.t_sexo AS ENUM (
@@ -123,11 +116,9 @@ CREATE TYPE public.t_sexo AS ENUM (
 );
 
 
-ALTER TYPE public.t_sexo OWNER TO hezek;
-
 --
 -- TOC entry 855 (class 1247 OID 16620)
--- Name: t_sino; Type: TYPE; Schema: public; Owner: hezek
+-- Name: t_sino; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.t_sino AS ENUM (
@@ -136,11 +127,9 @@ CREATE TYPE public.t_sino AS ENUM (
 );
 
 
-ALTER TYPE public.t_sino OWNER TO hezek;
-
 --
 -- TOC entry 858 (class 1247 OID 16626)
--- Name: t_tipocama; Type: TYPE; Schema: public; Owner: hezek
+-- Name: t_tipocama; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.t_tipocama AS ENUM (
@@ -150,15 +139,13 @@ CREATE TYPE public.t_tipocama AS ENUM (
 );
 
 
-ALTER TYPE public.t_tipocama OWNER TO hezek;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
 -- TOC entry 214 (class 1259 OID 16633)
--- Name: ciudades; Type: TABLE; Schema: public; Owner: hezek
+-- Name: ciudades; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ciudades (
@@ -171,11 +158,9 @@ CREATE TABLE public.ciudades (
 );
 
 
-ALTER TABLE public.ciudades OWNER TO hezek;
-
 --
 -- TOC entry 215 (class 1259 OID 16639)
--- Name: clientes; Type: TABLE; Schema: public; Owner: hezek
+-- Name: clientes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.clientes (
@@ -191,11 +176,9 @@ CREATE TABLE public.clientes (
 );
 
 
-ALTER TABLE public.clientes OWNER TO hezek;
-
 --
 -- TOC entry 216 (class 1259 OID 16646)
--- Name: continentes; Type: TABLE; Schema: public; Owner: hezek
+-- Name: continentes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.continentes (
@@ -204,11 +187,9 @@ CREATE TABLE public.continentes (
 );
 
 
-ALTER TABLE public.continentes OWNER TO hezek;
-
 --
 -- TOC entry 217 (class 1259 OID 16650)
--- Name: costos_habitacion; Type: TABLE; Schema: public; Owner: hezek
+-- Name: costos_habitacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.costos_habitacion (
@@ -220,11 +201,9 @@ CREATE TABLE public.costos_habitacion (
 );
 
 
-ALTER TABLE public.costos_habitacion OWNER TO hezek;
-
 --
 -- TOC entry 218 (class 1259 OID 16653)
--- Name: divisiones_politicas; Type: TABLE; Schema: public; Owner: hezek
+-- Name: divisiones_politicas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.divisiones_politicas (
@@ -235,11 +214,9 @@ CREATE TABLE public.divisiones_politicas (
 );
 
 
-ALTER TABLE public.divisiones_politicas OWNER TO hezek;
-
 --
 -- TOC entry 219 (class 1259 OID 16658)
--- Name: estadias_anteriores; Type: TABLE; Schema: public; Owner: hezek
+-- Name: estadias_anteriores; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.estadias_anteriores (
@@ -251,11 +228,9 @@ CREATE TABLE public.estadias_anteriores (
 );
 
 
-ALTER TABLE public.estadias_anteriores OWNER TO hezek;
-
 --
 -- TOC entry 225 (class 1259 OID 16683)
--- Name: reservas_anteriores; Type: TABLE; Schema: public; Owner: hezek
+-- Name: reservas_anteriores; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.reservas_anteriores (
@@ -267,11 +242,9 @@ CREATE TABLE public.reservas_anteriores (
 );
 
 
-ALTER TABLE public.reservas_anteriores OWNER TO hezek;
-
 --
 -- TOC entry 227 (class 1259 OID 16827)
--- Name: estadias; Type: VIEW; Schema: public; Owner: hezek
+-- Name: estadias; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.estadias AS
@@ -283,11 +256,9 @@ CREATE VIEW public.estadias AS
      JOIN public.reservas_anteriores ra ON (((ea.hotel_codigo = ra.hotel_codigo) AND (ea.nro_habitacion = ra.nro_habitacion) AND (ea.check_in = ra.check_in))));
 
 
-ALTER VIEW public.estadias OWNER TO hezek;
-
 --
 -- TOC entry 220 (class 1259 OID 16661)
--- Name: habitaciones; Type: TABLE; Schema: public; Owner: hezek
+-- Name: habitaciones; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.habitaciones (
@@ -298,11 +269,9 @@ CREATE TABLE public.habitaciones (
 );
 
 
-ALTER TABLE public.habitaciones OWNER TO hezek;
-
 --
 -- TOC entry 221 (class 1259 OID 16665)
--- Name: hoteles; Type: TABLE; Schema: public; Owner: hezek
+-- Name: hoteles; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.hoteles (
@@ -317,11 +286,9 @@ CREATE TABLE public.hoteles (
 );
 
 
-ALTER TABLE public.hoteles OWNER TO hezek;
-
 --
 -- TOC entry 222 (class 1259 OID 16671)
--- Name: limitan; Type: TABLE; Schema: public; Owner: hezek
+-- Name: limitan; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.limitan (
@@ -330,11 +297,9 @@ CREATE TABLE public.limitan (
 );
 
 
-ALTER TABLE public.limitan OWNER TO hezek;
-
 --
 -- TOC entry 223 (class 1259 OID 16674)
--- Name: ocupaciones; Type: TABLE; Schema: public; Owner: hezek
+-- Name: ocupaciones; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ocupaciones (
@@ -343,11 +308,9 @@ CREATE TABLE public.ocupaciones (
 );
 
 
-ALTER TABLE public.ocupaciones OWNER TO hezek;
-
 --
 -- TOC entry 224 (class 1259 OID 16677)
--- Name: paises; Type: TABLE; Schema: public; Owner: hezek
+-- Name: paises; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.paises (
@@ -359,11 +322,9 @@ CREATE TABLE public.paises (
 );
 
 
-ALTER TABLE public.paises OWNER TO hezek;
-
 --
 -- TOC entry 228 (class 1259 OID 16841)
--- Name: reservas_anteriores_sin_precio; Type: VIEW; Schema: public; Owner: hezek
+-- Name: reservas_anteriores_sin_precio; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.reservas_anteriores_sin_precio AS
@@ -381,11 +342,9 @@ CREATE VIEW public.reservas_anteriores_sin_precio AS
           WHERE ((ra2.hotel_codigo = ea.hotel_codigo) AND (ra2.nro_habitacion = ea.nro_habitacion) AND (ra2.check_in = ea.check_in) AND (ra2.fecha_reserva > ra.fecha_reserva))))))));
 
 
-ALTER VIEW public.reservas_anteriores_sin_precio OWNER TO hezek;
-
 --
 -- TOC entry 229 (class 1259 OID 16851)
--- Name: reservas; Type: VIEW; Schema: public; Owner: hezek
+-- Name: reservas; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.reservas AS
@@ -403,11 +362,9 @@ CREATE VIEW public.reservas AS
           WHERE ((rasp.nro_habitacion = ch2.nro_habitacion) AND (rasp.hotel_codigo = ch2.hotel_codigo) AND (ch2.fecha_desde <= rasp.check_in))));
 
 
-ALTER VIEW public.reservas OWNER TO hezek;
-
 --
 -- TOC entry 226 (class 1259 OID 16686)
--- Name: tipos_habitacion; Type: TABLE; Schema: public; Owner: hezek
+-- Name: tipos_habitacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.tipos_habitacion (
@@ -420,12 +377,10 @@ CREATE TABLE public.tipos_habitacion (
 );
 
 
-ALTER TABLE public.tipos_habitacion OWNER TO hezek;
-
 --
 -- TOC entry 3540 (class 0 OID 16633)
 -- Dependencies: 214
--- Data for Name: ciudades; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: ciudades; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.ciudades (pais_codigo, division_politica_codigo, ciudad_codigo, nombre, latitud, longitud) FROM stdin;
@@ -19985,7 +19940,7 @@ TF	0	0	INUIT TERR	128.5364000	542.4565000
 --
 -- TOC entry 3541 (class 0 OID 16639)
 -- Dependencies: 215
--- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.clientes (cliente_documento, nombre, apellido, sexo, fecha_nacimiento, ocupacion_codigo, pais_codigo, division_politica_codigo, ciudad_codigo) FROM stdin;
@@ -29103,7 +29058,7 @@ COPY public.clientes (cliente_documento, nombre, apellido, sexo, fecha_nacimient
 --
 -- TOC entry 3542 (class 0 OID 16646)
 -- Dependencies: 216
--- Data for Name: continentes; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: continentes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.continentes (continente_codigo, nombre) FROM stdin;
@@ -29120,7 +29075,7 @@ SA	South America
 --
 -- TOC entry 3543 (class 0 OID 16650)
 -- Dependencies: 217
--- Data for Name: costos_habitacion; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: costos_habitacion; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) FROM stdin;
@@ -35479,7 +35434,7 @@ COPY public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_
 --
 -- TOC entry 3544 (class 0 OID 16653)
 -- Dependencies: 218
--- Data for Name: divisiones_politicas; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: divisiones_politicas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.divisiones_politicas (pais_codigo, division_politica_codigo, nombre, zona_horaria) FROM stdin;
@@ -39318,7 +39273,7 @@ TF	0	ARTICO CAGADO DE FRIOOOO	ANTARTIDA/FRANCH
 --
 -- TOC entry 3545 (class 0 OID 16658)
 -- Dependencies: 219
--- Data for Name: estadias_anteriores; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: estadias_anteriores; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.estadias_anteriores (hotel_codigo, nro_habitacion, cliente_documento, check_in, check_out) FROM stdin;
@@ -40067,7 +40022,7 @@ COPY public.estadias_anteriores (hotel_codigo, nro_habitacion, cliente_documento
 --
 -- TOC entry 3546 (class 0 OID 16661)
 -- Dependencies: 220
--- Data for Name: habitaciones; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: habitaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.habitaciones (hotel_codigo, nro_habitacion, tipo_habitacion_codigo, m2) FROM stdin;
@@ -43213,7 +43168,7 @@ COPY public.habitaciones (hotel_codigo, nro_habitacion, tipo_habitacion_codigo, 
 --
 -- TOC entry 3547 (class 0 OID 16665)
 -- Dependencies: 221
--- Data for Name: hoteles; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: hoteles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.hoteles (hotel_codigo, nombre, estrellas, latitud, longitud, pais_codigo, division_politica_codigo, ciudad_codigo) FROM stdin;
@@ -43852,7 +43807,7 @@ COPY public.hoteles (hotel_codigo, nombre, estrellas, latitud, longitud, pais_co
 --
 -- TOC entry 3548 (class 0 OID 16671)
 -- Dependencies: 222
--- Data for Name: limitan; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: limitan; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.limitan (pais1_codigo, pais2_codigo) FROM stdin;
@@ -44500,7 +44455,7 @@ ZW	ZM
 --
 -- TOC entry 3549 (class 0 OID 16674)
 -- Dependencies: 223
--- Data for Name: ocupaciones; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: ocupaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.ocupaciones (ocupacion_codigo, descripcion) FROM stdin;
@@ -46208,7 +46163,7 @@ X3111	Trabajadores que no han declarado ninguna ocupación
 --
 -- TOC entry 3550 (class 0 OID 16677)
 -- Dependencies: 224
--- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.paises (pais_codigo, nombre, tld, prefijo_telefonico, continente_codigo) FROM stdin;
@@ -46468,7 +46423,7 @@ HM	Territory of Heard Island and McDonald Islands	.hm	\N	AN
 --
 -- TOC entry 3551 (class 0 OID 16683)
 -- Dependencies: 225
--- Data for Name: reservas_anteriores; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: reservas_anteriores; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.reservas_anteriores (hotel_codigo, nro_habitacion, cliente_documento, fecha_reserva, check_in) FROM stdin;
@@ -46634,7 +46589,7 @@ COPY public.reservas_anteriores (hotel_codigo, nro_habitacion, cliente_documento
 --
 -- TOC entry 3552 (class 0 OID 16686)
 -- Dependencies: 226
--- Data for Name: tipos_habitacion; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: tipos_habitacion; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.tipos_habitacion (tipo_habitacion_codigo, descripcion, tv_cable, frigobar, tipo_cama, cant_camas) FROM stdin;
@@ -46650,7 +46605,7 @@ COPY public.tipos_habitacion (tipo_habitacion_codigo, descripcion, tv_cable, fri
 
 --
 -- TOC entry 3342 (class 2606 OID 16690)
--- Name: ciudades ciudades_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: ciudades ciudades_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ciudades
@@ -46659,7 +46614,7 @@ ALTER TABLE ONLY public.ciudades
 
 --
 -- TOC entry 3345 (class 2606 OID 16692)
--- Name: clientes clientes_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: clientes clientes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.clientes
@@ -46668,7 +46623,7 @@ ALTER TABLE ONLY public.clientes
 
 --
 -- TOC entry 3348 (class 2606 OID 16694)
--- Name: continentes continentes_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: continentes continentes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.continentes
@@ -46677,7 +46632,7 @@ ALTER TABLE ONLY public.continentes
 
 --
 -- TOC entry 3350 (class 2606 OID 16696)
--- Name: costos_habitacion costos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: costos_habitacion costos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.costos_habitacion
@@ -46686,7 +46641,7 @@ ALTER TABLE ONLY public.costos_habitacion
 
 --
 -- TOC entry 3353 (class 2606 OID 16698)
--- Name: divisiones_politicas divisiones_politicas_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: divisiones_politicas divisiones_politicas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.divisiones_politicas
@@ -46695,7 +46650,7 @@ ALTER TABLE ONLY public.divisiones_politicas
 
 --
 -- TOC entry 3356 (class 2606 OID 16700)
--- Name: estadias_anteriores estadias_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: estadias_anteriores estadias_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.estadias_anteriores
@@ -46704,7 +46659,7 @@ ALTER TABLE ONLY public.estadias_anteriores
 
 --
 -- TOC entry 3360 (class 2606 OID 16702)
--- Name: habitaciones habitaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: habitaciones habitaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.habitaciones
@@ -46713,7 +46668,7 @@ ALTER TABLE ONLY public.habitaciones
 
 --
 -- TOC entry 3363 (class 2606 OID 16704)
--- Name: hoteles hoteles_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: hoteles hoteles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.hoteles
@@ -46722,7 +46677,7 @@ ALTER TABLE ONLY public.hoteles
 
 --
 -- TOC entry 3368 (class 2606 OID 16706)
--- Name: limitan limitan_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: limitan limitan_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.limitan
@@ -46731,7 +46686,7 @@ ALTER TABLE ONLY public.limitan
 
 --
 -- TOC entry 3370 (class 2606 OID 16708)
--- Name: ocupaciones ocupaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: ocupaciones ocupaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ocupaciones
@@ -46740,7 +46695,7 @@ ALTER TABLE ONLY public.ocupaciones
 
 --
 -- TOC entry 3373 (class 2606 OID 16710)
--- Name: paises paises_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: paises paises_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.paises
@@ -46749,7 +46704,7 @@ ALTER TABLE ONLY public.paises
 
 --
 -- TOC entry 3377 (class 2606 OID 16712)
--- Name: reservas_anteriores reservas_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: reservas_anteriores reservas_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reservas_anteriores
@@ -46758,7 +46713,7 @@ ALTER TABLE ONLY public.reservas_anteriores
 
 --
 -- TOC entry 3379 (class 2606 OID 16714)
--- Name: tipos_habitacion tipos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- Name: tipos_habitacion tipos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.tipos_habitacion
@@ -46767,7 +46722,7 @@ ALTER TABLE ONLY public.tipos_habitacion
 
 --
 -- TOC entry 3346 (class 1259 OID 16715)
--- Name: iciudades_clientes; Type: INDEX; Schema: public; Owner: hezek
+-- Name: iciudades_clientes; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iciudades_clientes ON public.clientes USING btree (pais_codigo, division_politica_codigo, ciudad_codigo);
@@ -46775,7 +46730,7 @@ CREATE INDEX iciudades_clientes ON public.clientes USING btree (pais_codigo, div
 
 --
 -- TOC entry 3364 (class 1259 OID 16716)
--- Name: iciudades_hoteles; Type: INDEX; Schema: public; Owner: hezek
+-- Name: iciudades_hoteles; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iciudades_hoteles ON public.hoteles USING btree (pais_codigo, division_politica_codigo, ciudad_codigo);
@@ -46783,7 +46738,7 @@ CREATE INDEX iciudades_hoteles ON public.hoteles USING btree (pais_codigo, divis
 
 --
 -- TOC entry 3357 (class 1259 OID 16717)
--- Name: iclientes_estadias_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- Name: iclientes_estadias_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iclientes_estadias_anteriores ON public.estadias_anteriores USING btree (cliente_documento);
@@ -46791,7 +46746,7 @@ CREATE INDEX iclientes_estadias_anteriores ON public.estadias_anteriores USING b
 
 --
 -- TOC entry 3374 (class 1259 OID 16718)
--- Name: iclientes_reservas_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- Name: iclientes_reservas_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iclientes_reservas_anteriores ON public.reservas_anteriores USING btree (cliente_documento);
@@ -46799,7 +46754,7 @@ CREATE INDEX iclientes_reservas_anteriores ON public.reservas_anteriores USING b
 
 --
 -- TOC entry 3371 (class 1259 OID 16719)
--- Name: icontinentes; Type: INDEX; Schema: public; Owner: hezek
+-- Name: icontinentes; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX icontinentes ON public.paises USING btree (continente_codigo);
@@ -46807,7 +46762,7 @@ CREATE INDEX icontinentes ON public.paises USING btree (continente_codigo);
 
 --
 -- TOC entry 3343 (class 1259 OID 16720)
--- Name: idivisiones_politicas; Type: INDEX; Schema: public; Owner: hezek
+-- Name: idivisiones_politicas; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idivisiones_politicas ON public.ciudades USING btree (pais_codigo, division_politica_codigo);
@@ -46815,7 +46770,7 @@ CREATE INDEX idivisiones_politicas ON public.ciudades USING btree (pais_codigo, 
 
 --
 -- TOC entry 3351 (class 1259 OID 16721)
--- Name: ihabitaciones_costoshabitacion; Type: INDEX; Schema: public; Owner: hezek
+-- Name: ihabitaciones_costoshabitacion; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_costoshabitacion ON public.costos_habitacion USING btree (hotel_codigo, nro_habitacion);
@@ -46823,7 +46778,7 @@ CREATE INDEX ihabitaciones_costoshabitacion ON public.costos_habitacion USING bt
 
 --
 -- TOC entry 3358 (class 1259 OID 16722)
--- Name: ihabitaciones_estadias_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- Name: ihabitaciones_estadias_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_estadias_anteriores ON public.estadias_anteriores USING btree (hotel_codigo, nro_habitacion);
@@ -46831,7 +46786,7 @@ CREATE INDEX ihabitaciones_estadias_anteriores ON public.estadias_anteriores USI
 
 --
 -- TOC entry 3375 (class 1259 OID 16723)
--- Name: ihabitaciones_reservas_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- Name: ihabitaciones_reservas_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_reservas_anteriores ON public.reservas_anteriores USING btree (hotel_codigo, nro_habitacion);
@@ -46839,7 +46794,7 @@ CREATE INDEX ihabitaciones_reservas_anteriores ON public.reservas_anteriores USI
 
 --
 -- TOC entry 3361 (class 1259 OID 16724)
--- Name: ihabitaciones_tiposhabitacion; Type: INDEX; Schema: public; Owner: hezek
+-- Name: ihabitaciones_tiposhabitacion; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_tiposhabitacion ON public.habitaciones USING btree (tipo_habitacion_codigo);
@@ -46847,7 +46802,7 @@ CREATE INDEX ihabitaciones_tiposhabitacion ON public.habitaciones USING btree (t
 
 --
 -- TOC entry 3354 (class 1259 OID 16725)
--- Name: ipaises; Type: INDEX; Schema: public; Owner: hezek
+-- Name: ipaises; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ipaises ON public.divisiones_politicas USING btree (pais_codigo);
@@ -46855,7 +46810,7 @@ CREATE INDEX ipaises ON public.divisiones_politicas USING btree (pais_codigo);
 
 --
 -- TOC entry 3365 (class 1259 OID 16726)
--- Name: ipaises1; Type: INDEX; Schema: public; Owner: hezek
+-- Name: ipaises1; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ipaises1 ON public.limitan USING btree (pais1_codigo);
@@ -46863,7 +46818,7 @@ CREATE INDEX ipaises1 ON public.limitan USING btree (pais1_codigo);
 
 --
 -- TOC entry 3366 (class 1259 OID 16727)
--- Name: ipaises2; Type: INDEX; Schema: public; Owner: hezek
+-- Name: ipaises2; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ipaises2 ON public.limitan USING btree (pais2_codigo);
@@ -46871,7 +46826,7 @@ CREATE INDEX ipaises2 ON public.limitan USING btree (pais2_codigo);
 
 --
 -- TOC entry 3381 (class 2606 OID 16728)
--- Name: clientes fciudades_clientes; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: clientes fciudades_clientes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.clientes
@@ -46880,7 +46835,7 @@ ALTER TABLE ONLY public.clientes
 
 --
 -- TOC entry 3389 (class 2606 OID 16733)
--- Name: hoteles fciudades_hoteles; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: hoteles fciudades_hoteles; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.hoteles
@@ -46889,7 +46844,7 @@ ALTER TABLE ONLY public.hoteles
 
 --
 -- TOC entry 3385 (class 2606 OID 16738)
--- Name: estadias_anteriores fclientes_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: estadias_anteriores fclientes_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.estadias_anteriores
@@ -46898,7 +46853,7 @@ ALTER TABLE ONLY public.estadias_anteriores
 
 --
 -- TOC entry 3393 (class 2606 OID 16743)
--- Name: reservas_anteriores fclientes_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: reservas_anteriores fclientes_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reservas_anteriores
@@ -46907,7 +46862,7 @@ ALTER TABLE ONLY public.reservas_anteriores
 
 --
 -- TOC entry 3392 (class 2606 OID 16748)
--- Name: paises fcontinentes; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: paises fcontinentes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.paises
@@ -46916,7 +46871,7 @@ ALTER TABLE ONLY public.paises
 
 --
 -- TOC entry 3380 (class 2606 OID 16753)
--- Name: ciudades fdivisiones_politicas; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: ciudades fdivisiones_politicas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ciudades
@@ -46925,7 +46880,7 @@ ALTER TABLE ONLY public.ciudades
 
 --
 -- TOC entry 3383 (class 2606 OID 16758)
--- Name: costos_habitacion fhabitaciones_costoshabitacion; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: costos_habitacion fhabitaciones_costoshabitacion; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.costos_habitacion
@@ -46934,7 +46889,7 @@ ALTER TABLE ONLY public.costos_habitacion
 
 --
 -- TOC entry 3386 (class 2606 OID 16763)
--- Name: estadias_anteriores fhabitaciones_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: estadias_anteriores fhabitaciones_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.estadias_anteriores
@@ -46943,7 +46898,7 @@ ALTER TABLE ONLY public.estadias_anteriores
 
 --
 -- TOC entry 3394 (class 2606 OID 16768)
--- Name: reservas_anteriores fhabitaciones_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: reservas_anteriores fhabitaciones_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reservas_anteriores
@@ -46952,7 +46907,7 @@ ALTER TABLE ONLY public.reservas_anteriores
 
 --
 -- TOC entry 3387 (class 2606 OID 16773)
--- Name: habitaciones fhoteles_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: habitaciones fhoteles_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.habitaciones
@@ -46961,7 +46916,7 @@ ALTER TABLE ONLY public.habitaciones
 
 --
 -- TOC entry 3382 (class 2606 OID 16778)
--- Name: clientes focupaciones_clientes; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: clientes focupaciones_clientes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.clientes
@@ -46970,7 +46925,7 @@ ALTER TABLE ONLY public.clientes
 
 --
 -- TOC entry 3384 (class 2606 OID 16783)
--- Name: divisiones_politicas fpaises; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: divisiones_politicas fpaises; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.divisiones_politicas
@@ -46979,7 +46934,7 @@ ALTER TABLE ONLY public.divisiones_politicas
 
 --
 -- TOC entry 3390 (class 2606 OID 16788)
--- Name: limitan fpaises1; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: limitan fpaises1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.limitan
@@ -46988,7 +46943,7 @@ ALTER TABLE ONLY public.limitan
 
 --
 -- TOC entry 3391 (class 2606 OID 16793)
--- Name: limitan fpaises2; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: limitan fpaises2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.limitan
@@ -46997,14 +46952,14 @@ ALTER TABLE ONLY public.limitan
 
 --
 -- TOC entry 3388 (class 2606 OID 16798)
--- Name: habitaciones ftiposhabitacion_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- Name: habitaciones ftiposhabitacion_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.habitaciones
     ADD CONSTRAINT ftiposhabitacion_habitaciones FOREIGN KEY (tipo_habitacion_codigo) REFERENCES public.tipos_habitacion(tipo_habitacion_codigo);
 
 
--- Completed on 2023-10-10 01:55:04 -03
+-- Completed on 2023-10-12 20:38:09 -03
 
 --
 -- PostgreSQL database dump complete
@@ -47021,7 +46976,7 @@ ALTER TABLE ONLY public.habitaciones
 -- Dumped from database version 15.4 (Ubuntu 15.4-2.pgdg22.04+1)
 -- Dumped by pg_dump version 16.0 (Ubuntu 16.0-1.pgdg22.04+1)
 
--- Started on 2023-10-10 01:55:04 -03
+-- Started on 2023-10-12 20:38:09 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -47035,14 +46990,12 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 3558 (class 1262 OID 16856)
--- Name: lab3_fbd; Type: DATABASE; Schema: -; Owner: hezek
+-- TOC entry 3568 (class 1262 OID 16856)
+-- Name: lab3_fbd; Type: DATABASE; Schema: -; Owner: -
 --
 
 CREATE DATABASE lab3_fbd WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'es_MX.UTF-8';
 
-
-ALTER DATABASE lab3_fbd OWNER TO hezek;
 
 \connect lab3_fbd
 
@@ -47059,17 +47012,15 @@ SET row_security = off;
 
 --
 -- TOC entry 5 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: hezek
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
 --
 
 -- *not* creating schema, since initdb creates it
 
 
-ALTER SCHEMA public OWNER TO hezek;
-
 --
--- TOC entry 852 (class 1247 OID 16858)
--- Name: t_sexo; Type: TYPE; Schema: public; Owner: hezek
+-- TOC entry 857 (class 1247 OID 16858)
+-- Name: t_sexo; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.t_sexo AS ENUM (
@@ -47078,11 +47029,9 @@ CREATE TYPE public.t_sexo AS ENUM (
 );
 
 
-ALTER TYPE public.t_sexo OWNER TO hezek;
-
 --
--- TOC entry 855 (class 1247 OID 16864)
--- Name: t_sino; Type: TYPE; Schema: public; Owner: hezek
+-- TOC entry 860 (class 1247 OID 16864)
+-- Name: t_sino; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.t_sino AS ENUM (
@@ -47091,11 +47040,9 @@ CREATE TYPE public.t_sino AS ENUM (
 );
 
 
-ALTER TYPE public.t_sino OWNER TO hezek;
-
 --
--- TOC entry 858 (class 1247 OID 16870)
--- Name: t_tipocama; Type: TYPE; Schema: public; Owner: hezek
+-- TOC entry 863 (class 1247 OID 16870)
+-- Name: t_tipocama; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.t_tipocama AS ENUM (
@@ -47105,7 +47052,147 @@ CREATE TYPE public.t_tipocama AS ENUM (
 );
 
 
-ALTER TYPE public.t_tipocama OWNER TO hezek;
+--
+-- TOC entry 242 (class 1255 OID 17068)
+-- Name: actividad_cliente(character, integer, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.actividad_cliente(codigo character, clientedoc integer, anio integer) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$--delimita rango de la funcion
+DECLARE 
+	cantidad INTEGER;
+BEGIN
+	cantidad:=0;
+    -- Verificar si el cliente existe
+    IF NOT EXISTS (SELECT 1 FROM clientes WHERE cliente_documento = clientedoc) THEN
+        RAISE NOTICE 'No existe el cliente';
+    -- Calcular la cantidad de reservas o estadías según el código
+    ELSIF codigo = 'R' OR codigo = 'r' THEN
+        RETURN(
+	        SELECT COUNT(*) INTO cantidad FROM reservas_anteriores
+	        WHERE cliente_documento = clientedoc
+	        AND EXTRACT(YEAR FROM fecha_reserva) = anio
+	       );
+    ELSIF codigo = 'E' OR codigo = 'e' THEN
+        RETURN(
+	        SELECT COUNT(*) INTO cantidad  FROM estadias_anteriores
+	        WHERE cliente_documento = clientedoc
+	        AND EXTRACT(YEAR FROM check_in) = anio
+	       );
+    ELSE
+        RAISE NOTICE 'Código de operación incorrecto';
+    END IF;
+
+    RETURN cantidad;
+END;
+$$;
+
+
+--
+-- TOC entry 245 (class 1255 OID 17103)
+-- Name: control_costos(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.control_costos() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+        IF (TG_OP = 'UPDATE' AND (NEW.precio_noche IS NULL OR NEW.precio_noche <= 0)) THEN
+            RAISE NOTICE 'La actualización no es correcta';
+           	RETURN NULL;
+        ELSIF (TG_OP = 'DELETE' AND EXISTS (SELECT 1 FROM estadias e WHERE 
+        e.hotel_codigo = OLD.hotel_codigo AND 
+        e.nro_habitacion = OLD.nro_habitacion AND --join estadia costo hab
+        OLD.fecha_desde = 	--identifica si la fecha desde
+				(SELECT  MAX(fecha_desde) FROM costos_habitacion ch2 WHERE 
+					ch2.hotel_codigo = e.hotel_codigo  AND 
+					ch2.nro_habitacion  = e.nro_habitacion  AND 
+					ch2.fecha_desde <= e.check_in
+					) ) ) THEN
+            RAISE NOTICE 'La operación de borrado no es correcta';
+            RETURN NULL;
+        END IF;
+        RETURN NEW;
+    END;
+$$;
+
+
+--
+-- TOC entry 244 (class 1255 OID 17099)
+-- Name: generar_reporte(); Type: PROCEDURE; Schema: public; Owner: -
+--
+
+CREATE PROCEDURE public.generar_reporte()
+    LANGUAGE plpgsql
+    AS $$
+DECLARE 
+    pais bpchar(2);
+    cant_estrellas int2;--eq smallint
+    total_extra NUMERIC(10,2);
+   	parcial_extra NUMERIC(10,2);
+   	hotel int4;
+BEGIN
+	FOR pais IN
+        SELECT pais_codigo  FROM paises
+    LOOP
+		FOR cant_estrellas IN
+	        SELECT DISTINCT estrellas  FROM hoteles
+	    LOOP
+		    total_extra := 0;
+		    IF EXISTS (SELECT  1 FROM hoteles h	WHERE h.pais_codigo = pais AND h.estrellas = cant_estrellas) THEN 
+				FOR hotel IN
+			        SELECT  h.hotel_codigo FROM hoteles h WHERE h.pais_codigo = pais AND h.estrellas = cant_estrellas
+			    LOOP
+			    	SELECT SUM(monto) INTO parcial_extra FROM ingreso_extra(hotel);-- si NO posee estadias devuelve NULL
+			    	IF parcial_extra IS NOT NULL THEN
+			    		total_extra := total_extra + parcial_extra;
+			    	END IF;
+    			END LOOP;
+			END IF;
+		   	INSERT INTO resumen (pais_codigo, cant_estrellas, total_extra)--insertar los valores
+            	VALUES (pais, cant_estrellas, total_extra);
+	    END LOOP;
+    END LOOP;
+END;
+$$;
+
+
+--
+-- TOC entry 243 (class 1255 OID 17069)
+-- Name: ingreso_extra(integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.ingreso_extra(codhotel integer, OUT tipohab smallint, OUT monto numeric) RETURNS SETOF record
+    LANGUAGE plpgsql
+    AS $$
+BEGIN--Se puede plantear alternativa con FOR IN, y LOOP 
+	RETURN QUERY SELECT tipo_habitacion_codigo, SUM((check_out-check_in)*precio_noche)  FROM--define el record
+		costos_habitacion ch  JOIN habitaciones h ON 
+		h.hotel_codigo = ch.hotel_codigo AND 
+		h.nro_habitacion = ch.nro_habitacion JOIN estadias_anteriores ea ON 
+		ea.hotel_codigo = ch.hotel_codigo  AND 
+		ea.nro_habitacion = ch.nro_habitacion WHERE
+			ea.hotel_codigo = codhotel AND 
+			ch.fecha_desde =--Es la fecha mas cercana al CHECK-IN,la ultima fecha q identifica al precio_noche, alt: NOT EXISTS
+				(SELECT  MAX(fecha_desde) FROM costos_habitacion ch2 WHERE 
+					ch2.hotel_codigo = ch.hotel_codigo  AND 
+					ch2.nro_habitacion  = ch.nro_habitacion  AND 
+					ch2.fecha_desde <= ea.check_in
+					)
+			AND NOT EXISTS --NO existe reserva asociada
+				(SELECT 1 FROM 
+				reservas_anteriores ra WHERE
+				ea.hotel_codigo = ra.hotel_codigo AND 
+				ea.nro_habitacion = ra.nro_habitacion AND 
+				ea.check_in = ra.check_in 
+				)
+		GROUP BY tipo_habitacion_codigo;
+		
+		RETURN;--marca fin y regreso
+END;
+$$;
+
 
 SET default_tablespace = '';
 
@@ -47113,7 +47200,7 @@ SET default_table_access_method = heap;
 
 --
 -- TOC entry 214 (class 1259 OID 16877)
--- Name: ciudades; Type: TABLE; Schema: public; Owner: hezek
+-- Name: ciudades; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ciudades (
@@ -47126,11 +47213,9 @@ CREATE TABLE public.ciudades (
 );
 
 
-ALTER TABLE public.ciudades OWNER TO hezek;
-
 --
 -- TOC entry 215 (class 1259 OID 16883)
--- Name: clientes; Type: TABLE; Schema: public; Owner: hezek
+-- Name: clientes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.clientes (
@@ -47146,11 +47231,9 @@ CREATE TABLE public.clientes (
 );
 
 
-ALTER TABLE public.clientes OWNER TO hezek;
-
 --
 -- TOC entry 216 (class 1259 OID 16890)
--- Name: continentes; Type: TABLE; Schema: public; Owner: hezek
+-- Name: continentes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.continentes (
@@ -47159,11 +47242,9 @@ CREATE TABLE public.continentes (
 );
 
 
-ALTER TABLE public.continentes OWNER TO hezek;
-
 --
 -- TOC entry 217 (class 1259 OID 16894)
--- Name: costos_habitacion; Type: TABLE; Schema: public; Owner: hezek
+-- Name: costos_habitacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.costos_habitacion (
@@ -47175,11 +47256,9 @@ CREATE TABLE public.costos_habitacion (
 );
 
 
-ALTER TABLE public.costos_habitacion OWNER TO hezek;
-
 --
 -- TOC entry 218 (class 1259 OID 16897)
--- Name: divisiones_politicas; Type: TABLE; Schema: public; Owner: hezek
+-- Name: divisiones_politicas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.divisiones_politicas (
@@ -47190,11 +47269,9 @@ CREATE TABLE public.divisiones_politicas (
 );
 
 
-ALTER TABLE public.divisiones_politicas OWNER TO hezek;
-
 --
 -- TOC entry 219 (class 1259 OID 16902)
--- Name: estadias_anteriores; Type: TABLE; Schema: public; Owner: hezek
+-- Name: estadias_anteriores; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.estadias_anteriores (
@@ -47206,11 +47283,9 @@ CREATE TABLE public.estadias_anteriores (
 );
 
 
-ALTER TABLE public.estadias_anteriores OWNER TO hezek;
-
 --
 -- TOC entry 225 (class 1259 OID 16927)
--- Name: reservas_anteriores; Type: TABLE; Schema: public; Owner: hezek
+-- Name: reservas_anteriores; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.reservas_anteriores (
@@ -47222,11 +47297,9 @@ CREATE TABLE public.reservas_anteriores (
 );
 
 
-ALTER TABLE public.reservas_anteriores OWNER TO hezek;
-
 --
 -- TOC entry 229 (class 1259 OID 17063)
--- Name: estadias; Type: VIEW; Schema: public; Owner: hezek
+-- Name: estadias; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.estadias AS
@@ -47238,11 +47311,9 @@ CREATE VIEW public.estadias AS
      JOIN public.reservas_anteriores ra USING (hotel_codigo, nro_habitacion, check_in));
 
 
-ALTER VIEW public.estadias OWNER TO hezek;
-
 --
 -- TOC entry 220 (class 1259 OID 16905)
--- Name: habitaciones; Type: TABLE; Schema: public; Owner: hezek
+-- Name: habitaciones; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.habitaciones (
@@ -47253,11 +47324,9 @@ CREATE TABLE public.habitaciones (
 );
 
 
-ALTER TABLE public.habitaciones OWNER TO hezek;
-
 --
 -- TOC entry 221 (class 1259 OID 16909)
--- Name: hoteles; Type: TABLE; Schema: public; Owner: hezek
+-- Name: hoteles; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.hoteles (
@@ -47272,11 +47341,9 @@ CREATE TABLE public.hoteles (
 );
 
 
-ALTER TABLE public.hoteles OWNER TO hezek;
-
 --
 -- TOC entry 222 (class 1259 OID 16915)
--- Name: limitan; Type: TABLE; Schema: public; Owner: hezek
+-- Name: limitan; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.limitan (
@@ -47285,11 +47352,9 @@ CREATE TABLE public.limitan (
 );
 
 
-ALTER TABLE public.limitan OWNER TO hezek;
-
 --
 -- TOC entry 223 (class 1259 OID 16918)
--- Name: ocupaciones; Type: TABLE; Schema: public; Owner: hezek
+-- Name: ocupaciones; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ocupaciones (
@@ -47298,11 +47363,9 @@ CREATE TABLE public.ocupaciones (
 );
 
 
-ALTER TABLE public.ocupaciones OWNER TO hezek;
-
 --
 -- TOC entry 224 (class 1259 OID 16921)
--- Name: paises; Type: TABLE; Schema: public; Owner: hezek
+-- Name: paises; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.paises (
@@ -47314,11 +47377,9 @@ CREATE TABLE public.paises (
 );
 
 
-ALTER TABLE public.paises OWNER TO hezek;
-
 --
 -- TOC entry 227 (class 1259 OID 17053)
--- Name: reservas_anteriores_sin_precio; Type: VIEW; Schema: public; Owner: hezek
+-- Name: reservas_anteriores_sin_precio; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.reservas_anteriores_sin_precio AS
@@ -47337,11 +47398,9 @@ CREATE VIEW public.reservas_anteriores_sin_precio AS
           WHERE ((e2.hotel_codigo = r1.hotel_codigo) AND (e2.nro_habitacion = r1.nro_habitacion) AND (e2.check_in = r1.check_in) AND (e2.check_out > e1.check_out))))));
 
 
-ALTER VIEW public.reservas_anteriores_sin_precio OWNER TO hezek;
-
 --
 -- TOC entry 228 (class 1259 OID 17058)
--- Name: reservas; Type: VIEW; Schema: public; Owner: hezek
+-- Name: reservas; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.reservas AS
@@ -47359,11 +47418,21 @@ CREATE VIEW public.reservas AS
           WHERE ((r.hotel_codigo = c2.hotel_codigo) AND (r.nro_habitacion = c2.nro_habitacion) AND (r.check_in >= c2.fecha_desde) AND (c2.fecha_desde > c.fecha_desde))))));
 
 
-ALTER VIEW public.reservas OWNER TO hezek;
+--
+-- TOC entry 230 (class 1259 OID 17070)
+-- Name: resumen; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.resumen (
+    pais_codigo character(2),
+    cant_estrellas smallint,
+    total_extra numeric(10,2)
+);
+
 
 --
 -- TOC entry 226 (class 1259 OID 16930)
--- Name: tipos_habitacion; Type: TABLE; Schema: public; Owner: hezek
+-- Name: tipos_habitacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.tipos_habitacion (
@@ -47376,12 +47445,10 @@ CREATE TABLE public.tipos_habitacion (
 );
 
 
-ALTER TABLE public.tipos_habitacion OWNER TO hezek;
-
 --
--- TOC entry 3540 (class 0 OID 16877)
+-- TOC entry 3549 (class 0 OID 16877)
 -- Dependencies: 214
--- Data for Name: ciudades; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: ciudades; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.ciudades (pais_codigo, division_politica_codigo, ciudad_codigo, nombre, latitud, longitud) FROM stdin;
@@ -66938,9 +67005,9 @@ RU	491	3709	Zadnevo	58.5772000	42.2157000
 
 
 --
--- TOC entry 3541 (class 0 OID 16883)
+-- TOC entry 3550 (class 0 OID 16883)
 -- Dependencies: 215
--- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.clientes (cliente_documento, nombre, apellido, sexo, fecha_nacimiento, ocupacion_codigo, pais_codigo, division_politica_codigo, ciudad_codigo) FROM stdin;
@@ -76056,9 +76123,9 @@ COPY public.clientes (cliente_documento, nombre, apellido, sexo, fecha_nacimient
 
 
 --
--- TOC entry 3542 (class 0 OID 16890)
+-- TOC entry 3551 (class 0 OID 16890)
 -- Dependencies: 216
--- Data for Name: continentes; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: continentes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.continentes (continente_codigo, nombre) FROM stdin;
@@ -76073,9 +76140,9 @@ SA	South America
 
 
 --
--- TOC entry 3543 (class 0 OID 16894)
+-- TOC entry 3552 (class 0 OID 16894)
 -- Dependencies: 217
--- Data for Name: costos_habitacion; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: costos_habitacion; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) FROM stdin;
@@ -77937,7 +78004,6 @@ COPY public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_
 6463689	104	2000-11-19	49.63	138.40
 6463689	104	2002-06-16	38.69	126.29
 6463689	104	2013-05-19	32.46	140.64
-6463694	100	2006-06-11	15.67	34.04
 6463694	100	2013-07-11	10.24	33.84
 6463694	101	2006-04-09	14.78	42.00
 6463694	101	2011-07-17	15.78	44.80
@@ -82426,13 +82492,14 @@ COPY public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_
 6521449	103	2012-04-10	22.58	75.57
 6523210	104	2010-04-10	22.59	75.58
 6530456	102	2011-02-28	22.60	75.59
+6463694	100	2006-06-11	15.67	34.04
 \.
 
 
 --
--- TOC entry 3544 (class 0 OID 16897)
+-- TOC entry 3553 (class 0 OID 16897)
 -- Dependencies: 218
--- Data for Name: divisiones_politicas; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: divisiones_politicas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.divisiones_politicas (pais_codigo, division_politica_codigo, nombre, zona_horaria) FROM stdin;
@@ -86268,9 +86335,9 @@ ZW	1008	Harare Province	Africa/Harare
 
 
 --
--- TOC entry 3545 (class 0 OID 16902)
+-- TOC entry 3554 (class 0 OID 16902)
 -- Dependencies: 219
--- Data for Name: estadias_anteriores; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: estadias_anteriores; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.estadias_anteriores (hotel_codigo, nro_habitacion, cliente_documento, check_in, check_out) FROM stdin;
@@ -87008,9 +87075,9 @@ COPY public.estadias_anteriores (hotel_codigo, nro_habitacion, cliente_documento
 
 
 --
--- TOC entry 3546 (class 0 OID 16905)
+-- TOC entry 3555 (class 0 OID 16905)
 -- Dependencies: 220
--- Data for Name: habitaciones; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: habitaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.habitaciones (hotel_codigo, nro_habitacion, tipo_habitacion_codigo, m2) FROM stdin;
@@ -90153,9 +90220,9 @@ COPY public.habitaciones (hotel_codigo, nro_habitacion, tipo_habitacion_codigo, 
 
 
 --
--- TOC entry 3547 (class 0 OID 16909)
+-- TOC entry 3556 (class 0 OID 16909)
 -- Dependencies: 221
--- Data for Name: hoteles; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: hoteles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.hoteles (hotel_codigo, nombre, estrellas, latitud, longitud, pais_codigo, division_politica_codigo, ciudad_codigo) FROM stdin;
@@ -90790,9 +90857,9 @@ COPY public.hoteles (hotel_codigo, nombre, estrellas, latitud, longitud, pais_co
 
 
 --
--- TOC entry 3548 (class 0 OID 16915)
+-- TOC entry 3557 (class 0 OID 16915)
 -- Dependencies: 222
--- Data for Name: limitan; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: limitan; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.limitan (pais1_codigo, pais2_codigo) FROM stdin;
@@ -91438,9 +91505,9 @@ ZW	ZM
 
 
 --
--- TOC entry 3549 (class 0 OID 16918)
+-- TOC entry 3558 (class 0 OID 16918)
 -- Dependencies: 223
--- Data for Name: ocupaciones; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: ocupaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.ocupaciones (ocupacion_codigo, descripcion) FROM stdin;
@@ -93146,9 +93213,9 @@ X3111	Trabajadores que no han declarado ninguna ocupación
 
 
 --
--- TOC entry 3550 (class 0 OID 16921)
+-- TOC entry 3559 (class 0 OID 16921)
 -- Dependencies: 224
--- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.paises (pais_codigo, nombre, tld, prefijo_telefonico, continente_codigo) FROM stdin;
@@ -93406,9 +93473,9 @@ ZW	Republic of Zimbabwe	.zw	263                 	AF
 
 
 --
--- TOC entry 3551 (class 0 OID 16927)
+-- TOC entry 3560 (class 0 OID 16927)
 -- Dependencies: 225
--- Data for Name: reservas_anteriores; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: reservas_anteriores; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.reservas_anteriores (hotel_codigo, nro_habitacion, cliente_documento, fecha_reserva, check_in) FROM stdin;
@@ -93562,9 +93629,1269 @@ COPY public.reservas_anteriores (hotel_codigo, nro_habitacion, cliente_documento
 
 
 --
--- TOC entry 3552 (class 0 OID 16930)
+-- TOC entry 3562 (class 0 OID 17070)
+-- Dependencies: 230
+-- Data for Name: resumen; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.resumen (pais_codigo, cant_estrellas, total_extra) FROM stdin;
+AD	1	0.00
+AD	3	481.92
+AD	5	0.00
+AD	2	340.40
+AD	4	0.00
+AE	1	0.00
+AE	3	0.00
+AE	5	1855.55
+AE	2	801.84
+AE	4	1436.95
+AF	1	0.00
+AF	3	0.00
+AF	5	0.00
+AF	2	0.00
+AF	4	0.00
+AG	1	677.25
+AG	3	1014.56
+AG	5	0.00
+AG	2	454.79
+AG	4	0.00
+AI	1	0.00
+AI	3	0.00
+AI	5	0.00
+AI	2	0.00
+AI	4	0.00
+AL	1	0.00
+AL	3	0.00
+AL	5	0.00
+AL	2	0.00
+AL	4	0.00
+AM	1	0.00
+AM	3	0.00
+AM	5	590.10
+AM	2	0.00
+AM	4	0.00
+AO	1	0.00
+AO	3	0.00
+AO	5	0.00
+AO	2	0.00
+AO	4	0.00
+AQ	1	0.00
+AQ	3	0.00
+AQ	5	0.00
+AQ	2	0.00
+AQ	4	0.00
+AR	1	0.00
+AR	3	4552.25
+AR	5	0.00
+AR	2	2002.00
+AR	4	1211.28
+AS	1	0.00
+AS	3	0.00
+AS	5	0.00
+AS	2	0.00
+AS	4	0.00
+AT	1	106.86
+AT	3	0.00
+AT	5	196.63
+AT	2	3454.50
+AT	4	0.00
+AU	1	0.00
+AU	3	3211.22
+AU	5	0.00
+AU	2	0.00
+AU	4	2085.71
+AW	1	0.00
+AW	3	0.00
+AW	5	0.00
+AW	2	0.00
+AW	4	0.00
+AX	1	0.00
+AX	3	0.00
+AX	5	1912.41
+AX	2	0.00
+AX	4	0.00
+AZ	1	0.00
+AZ	3	673.65
+AZ	5	0.00
+AZ	2	572.39
+AZ	4	0.00
+BA	1	0.00
+BA	3	0.00
+BA	5	0.00
+BA	2	0.00
+BA	4	0.00
+BB	1	0.00
+BB	3	0.00
+BB	5	0.00
+BB	2	588.20
+BB	4	0.00
+BD	1	0.00
+BD	3	196.02
+BD	5	0.00
+BD	2	0.00
+BD	4	0.00
+BE	1	0.00
+BE	3	2372.04
+BE	5	0.00
+BE	2	0.00
+BE	4	0.00
+BF	1	5113.56
+BF	3	0.00
+BF	5	0.00
+BF	2	0.00
+BF	4	0.00
+BG	1	1402.38
+BG	3	0.00
+BG	5	1357.62
+BG	2	0.00
+BG	4	1529.49
+BH	1	0.00
+BH	3	2419.12
+BH	5	0.00
+BH	2	0.00
+BH	4	0.00
+BI	1	0.00
+BI	3	0.00
+BI	5	0.00
+BI	2	0.00
+BI	4	0.00
+BJ	1	0.00
+BJ	3	0.00
+BJ	5	0.00
+BJ	2	0.00
+BJ	4	0.00
+BL	1	0.00
+BL	3	0.00
+BL	5	0.00
+BL	2	0.00
+BL	4	0.00
+BM	1	0.00
+BM	3	0.00
+BM	5	0.00
+BM	2	1227.74
+BM	4	0.00
+BN	1	0.00
+BN	3	0.00
+BN	5	0.00
+BN	2	0.00
+BN	4	0.00
+BO	1	0.00
+BO	3	1404.90
+BO	5	0.00
+BO	2	0.00
+BO	4	0.00
+BQ	1	0.00
+BQ	3	0.00
+BQ	5	0.00
+BQ	2	0.00
+BQ	4	0.00
+BR	1	0.00
+BR	3	0.00
+BR	5	0.00
+BR	2	0.00
+BR	4	754.32
+BS	1	0.00
+BS	3	0.00
+BS	5	0.00
+BS	2	1810.45
+BS	4	2069.25
+BT	1	0.00
+BT	3	0.00
+BT	5	0.00
+BT	2	1280.10
+BT	4	0.00
+BV	1	0.00
+BV	3	0.00
+BV	5	0.00
+BV	2	0.00
+BV	4	0.00
+BW	1	0.00
+BW	3	790.20
+BW	5	660.80
+BW	2	0.00
+BW	4	0.00
+BY	1	0.00
+BY	3	0.00
+BY	5	0.00
+BY	2	0.00
+BY	4	0.00
+BZ	1	0.00
+BZ	3	939.32
+BZ	5	0.00
+BZ	2	0.00
+BZ	4	4071.74
+CA	1	1088.62
+CA	3	3727.91
+CA	5	1958.25
+CA	2	0.00
+CA	4	0.00
+CC	1	0.00
+CC	3	0.00
+CC	5	0.00
+CC	2	0.00
+CC	4	0.00
+CD	1	0.00
+CD	3	0.00
+CD	5	0.00
+CD	2	0.00
+CD	4	0.00
+CF	1	0.00
+CF	3	0.00
+CF	5	0.00
+CF	2	0.00
+CF	4	0.00
+CG	1	0.00
+CG	3	0.00
+CG	5	0.00
+CG	2	0.00
+CG	4	0.00
+CH	1	650.80
+CH	3	352.70
+CH	5	0.00
+CH	2	2914.44
+CH	4	0.00
+CI	1	0.00
+CI	3	0.00
+CI	5	0.00
+CI	2	0.00
+CI	4	0.00
+CK	1	0.00
+CK	3	0.00
+CK	5	0.00
+CK	2	0.00
+CK	4	0.00
+CL	1	314.64
+CL	3	0.00
+CL	5	830.80
+CL	2	0.00
+CL	4	1115.38
+CM	1	0.00
+CM	3	0.00
+CM	5	0.00
+CM	2	0.00
+CM	4	0.00
+CN	1	0.00
+CN	3	1649.25
+CN	5	0.00
+CN	2	0.00
+CN	4	952.41
+CO	1	2382.93
+CO	3	235.86
+CO	5	0.00
+CO	2	0.00
+CO	4	0.00
+CR	1	0.00
+CR	3	0.00
+CR	5	514.22
+CR	2	0.00
+CR	4	422.16
+CU	1	0.00
+CU	3	0.00
+CU	5	0.00
+CU	2	0.00
+CU	4	0.00
+CV	1	0.00
+CV	3	0.00
+CV	5	0.00
+CV	2	0.00
+CV	4	0.00
+CW	1	0.00
+CW	3	0.00
+CW	5	0.00
+CW	2	0.00
+CW	4	0.00
+CX	1	0.00
+CX	3	0.00
+CX	5	0.00
+CX	2	0.00
+CX	4	0.00
+CY	1	0.00
+CY	3	2300.82
+CY	5	0.00
+CY	2	0.00
+CY	4	1656.00
+CZ	1	0.00
+CZ	3	1645.47
+CZ	5	0.00
+CZ	2	0.00
+CZ	4	3920.11
+DE	1	0.00
+DE	3	0.00
+DE	5	0.00
+DE	2	0.00
+DE	4	368.85
+DJ	1	0.00
+DJ	3	0.00
+DJ	5	0.00
+DJ	2	0.00
+DJ	4	1043.71
+DK	1	0.00
+DK	3	274.10
+DK	5	0.00
+DK	2	3375.12
+DK	4	184.50
+DM	1	0.00
+DM	3	7683.66
+DM	5	0.00
+DM	2	681.97
+DM	4	0.00
+DO	1	0.00
+DO	3	1480.98
+DO	5	665.80
+DO	2	1173.68
+DO	4	0.00
+DZ	1	0.00
+DZ	3	0.00
+DZ	5	0.00
+DZ	2	0.00
+DZ	4	0.00
+EC	1	0.00
+EC	3	876.12
+EC	5	0.00
+EC	2	0.00
+EC	4	2545.71
+EE	1	0.00
+EE	3	3133.47
+EE	5	0.00
+EE	2	0.00
+EE	4	722.64
+EG	1	0.00
+EG	3	0.00
+EG	5	0.00
+EG	2	3300.96
+EG	4	1398.00
+EH	1	0.00
+EH	3	0.00
+EH	5	0.00
+EH	2	0.00
+EH	4	0.00
+ER	1	0.00
+ER	3	0.00
+ER	5	0.00
+ER	2	0.00
+ER	4	0.00
+ES	1	1020.05
+ES	3	0.00
+ES	5	1421.39
+ES	2	1814.44
+ES	4	0.00
+ET	1	0.00
+ET	3	0.00
+ET	5	0.00
+ET	2	0.00
+ET	4	821.57
+FI	1	0.00
+FI	3	2212.01
+FI	5	0.00
+FI	2	1566.72
+FI	4	1713.60
+FJ	1	2904.85
+FJ	3	3346.22
+FJ	5	0.00
+FJ	2	2509.29
+FJ	4	2885.40
+FK	1	0.00
+FK	3	0.00
+FK	5	0.00
+FK	2	0.00
+FK	4	0.00
+FM	1	0.00
+FM	3	0.00
+FM	5	0.00
+FM	2	0.00
+FM	4	0.00
+FO	1	0.00
+FO	3	0.00
+FO	5	0.00
+FO	2	0.00
+FO	4	0.00
+FR	1	0.00
+FR	3	705.54
+FR	5	0.00
+FR	2	0.00
+FR	4	1402.72
+GA	1	0.00
+GA	3	0.00
+GA	5	0.00
+GA	2	0.00
+GA	4	0.00
+GB	1	0.00
+GB	3	0.00
+GB	5	0.00
+GB	2	132.28
+GB	4	1212.94
+GD	1	490.20
+GD	3	0.00
+GD	5	0.00
+GD	2	1334.88
+GD	4	418.01
+GE	1	0.00
+GE	3	1865.52
+GE	5	0.00
+GE	2	0.00
+GE	4	0.00
+GF	1	0.00
+GF	3	0.00
+GF	5	0.00
+GF	2	0.00
+GF	4	0.00
+GG	1	0.00
+GG	3	0.00
+GG	5	0.00
+GG	2	0.00
+GG	4	0.00
+GH	1	0.00
+GH	3	0.00
+GH	5	0.00
+GH	2	460.35
+GH	4	992.70
+GI	1	0.00
+GI	3	0.00
+GI	5	0.00
+GI	2	0.00
+GI	4	0.00
+GL	1	0.00
+GL	3	0.00
+GL	5	0.00
+GL	2	0.00
+GL	4	0.00
+GM	1	0.00
+GM	3	0.00
+GM	5	0.00
+GM	2	0.00
+GM	4	0.00
+GN	1	0.00
+GN	3	0.00
+GN	5	0.00
+GN	2	0.00
+GN	4	0.00
+GP	1	0.00
+GP	3	405.36
+GP	5	0.00
+GP	2	732.76
+GP	4	0.00
+GQ	1	0.00
+GQ	3	0.00
+GQ	5	0.00
+GQ	2	0.00
+GQ	4	0.00
+GR	1	0.00
+GR	3	1092.42
+GR	5	0.00
+GR	2	1984.88
+GR	4	658.53
+GS	1	0.00
+GS	3	0.00
+GS	5	0.00
+GS	2	0.00
+GS	4	0.00
+GT	1	0.00
+GT	3	2970.37
+GT	5	0.00
+GT	2	0.00
+GT	4	1052.96
+GU	1	0.00
+GU	3	0.00
+GU	5	0.00
+GU	2	1438.40
+GU	4	0.00
+GW	1	0.00
+GW	3	0.00
+GW	5	0.00
+GW	2	0.00
+GW	4	0.00
+GY	1	0.00
+GY	3	0.00
+GY	5	1006.95
+GY	2	1324.52
+GY	4	0.00
+HK	1	0.00
+HK	3	0.00
+HK	5	0.00
+HK	2	0.00
+HK	4	0.00
+HM	1	0.00
+HM	3	0.00
+HM	5	0.00
+HM	2	0.00
+HM	4	0.00
+HN	1	2449.61
+HN	3	0.00
+HN	5	0.00
+HN	2	2208.08
+HN	4	0.00
+HR	1	0.00
+HR	3	0.00
+HR	5	0.00
+HR	2	0.00
+HR	4	939.36
+HT	1	0.00
+HT	3	0.00
+HT	5	0.00
+HT	2	0.00
+HT	4	93.15
+HU	1	0.00
+HU	3	1966.88
+HU	5	0.00
+HU	2	0.00
+HU	4	1094.10
+ID	1	0.00
+ID	3	1928.65
+ID	5	0.00
+ID	2	633.60
+ID	4	797.42
+IE	1	0.00
+IE	3	0.00
+IE	5	4543.65
+IE	2	0.00
+IE	4	4648.23
+IL	1	0.00
+IL	3	202.32
+IL	5	0.00
+IL	2	910.14
+IL	4	0.00
+IM	1	0.00
+IM	3	0.00
+IM	5	0.00
+IM	2	0.00
+IM	4	0.00
+IN	1	0.00
+IN	3	6757.94
+IN	5	992.64
+IN	2	0.00
+IN	4	0.00
+IO	1	0.00
+IO	3	0.00
+IO	5	0.00
+IO	2	0.00
+IO	4	0.00
+IQ	1	0.00
+IQ	3	0.00
+IQ	5	0.00
+IQ	2	0.00
+IQ	4	0.00
+IR	1	0.00
+IR	3	0.00
+IR	5	0.00
+IR	2	0.00
+IR	4	0.00
+IS	1	680.76
+IS	3	935.30
+IS	5	0.00
+IS	2	0.00
+IS	4	0.00
+IT	1	323.50
+IT	3	0.00
+IT	5	0.00
+IT	2	2101.75
+IT	4	0.00
+JE	1	0.00
+JE	3	0.00
+JE	5	0.00
+JE	2	0.00
+JE	4	0.00
+JM	1	2517.70
+JM	3	1101.75
+JM	5	0.00
+JM	2	0.00
+JM	4	0.00
+JO	1	0.00
+JO	3	0.00
+JO	5	3932.28
+JO	2	1050.36
+JO	4	511.35
+JP	1	2009.71
+JP	3	0.00
+JP	5	358.90
+JP	2	0.00
+JP	4	0.00
+KE	1	2450.70
+KE	3	0.00
+KE	5	762.11
+KE	2	0.00
+KE	4	0.00
+KG	1	0.00
+KG	3	0.00
+KG	5	0.00
+KG	2	127.90
+KG	4	0.00
+KH	1	543.32
+KH	3	0.00
+KH	5	0.00
+KH	2	0.00
+KH	4	1221.66
+KI	1	0.00
+KI	3	0.00
+KI	5	0.00
+KI	2	0.00
+KI	4	0.00
+KM	1	0.00
+KM	3	0.00
+KM	5	0.00
+KM	2	0.00
+KM	4	0.00
+KN	1	0.00
+KN	3	0.00
+KN	5	0.00
+KN	2	3678.20
+KN	4	0.00
+KP	1	0.00
+KP	3	0.00
+KP	5	0.00
+KP	2	0.00
+KP	4	0.00
+KR	1	0.00
+KR	3	728.91
+KR	5	0.00
+KR	2	0.00
+KR	4	0.00
+KW	1	0.00
+KW	3	0.00
+KW	5	0.00
+KW	2	1035.14
+KW	4	0.00
+KY	1	0.00
+KY	3	0.00
+KY	5	0.00
+KY	2	0.00
+KY	4	0.00
+KZ	1	0.00
+KZ	3	0.00
+KZ	5	0.00
+KZ	2	0.00
+KZ	4	0.00
+LA	1	0.00
+LA	3	1089.92
+LA	5	0.00
+LA	2	526.15
+LA	4	0.00
+LB	1	0.00
+LB	3	0.00
+LB	5	0.00
+LB	2	1748.52
+LB	4	0.00
+LC	1	0.00
+LC	3	1335.35
+LC	5	731.17
+LC	2	1395.29
+LC	4	814.35
+LI	1	0.00
+LI	3	0.00
+LI	5	0.00
+LI	2	0.00
+LI	4	0.00
+LK	1	0.00
+LK	3	2786.62
+LK	5	0.00
+LK	2	0.00
+LK	4	0.00
+LR	1	0.00
+LR	3	0.00
+LR	5	0.00
+LR	2	0.00
+LR	4	0.00
+LS	1	0.00
+LS	3	0.00
+LS	5	0.00
+LS	2	0.00
+LS	4	0.00
+LT	1	0.00
+LT	3	653.00
+LT	5	992.60
+LT	2	1002.32
+LT	4	0.00
+LU	1	0.00
+LU	3	2111.90
+LU	5	0.00
+LU	2	0.00
+LU	4	3767.86
+LV	1	1841.50
+LV	3	0.00
+LV	5	0.00
+LV	2	0.00
+LV	4	1182.90
+LY	1	0.00
+LY	3	0.00
+LY	5	0.00
+LY	2	0.00
+LY	4	0.00
+MA	1	0.00
+MA	3	3998.94
+MA	5	0.00
+MA	2	1505.94
+MA	4	0.00
+MC	1	724.27
+MC	3	0.00
+MC	5	0.00
+MC	2	0.00
+MC	4	0.00
+MD	1	0.00
+MD	3	0.00
+MD	5	0.00
+MD	2	0.00
+MD	4	0.00
+ME	1	0.00
+ME	3	0.00
+ME	5	0.00
+ME	2	0.00
+ME	4	0.00
+MF	1	0.00
+MF	3	0.00
+MF	5	0.00
+MF	2	0.00
+MF	4	0.00
+MG	1	0.00
+MG	3	0.00
+MG	5	0.00
+MG	2	225.00
+MG	4	0.00
+MH	1	0.00
+MH	3	0.00
+MH	5	0.00
+MH	2	0.00
+MH	4	0.00
+MK	1	0.00
+MK	3	0.00
+MK	5	0.00
+MK	2	0.00
+MK	4	1000.50
+ML	1	0.00
+ML	3	0.00
+ML	5	0.00
+ML	2	0.00
+ML	4	0.00
+MM	1	0.00
+MM	3	0.00
+MM	5	0.00
+MM	2	0.00
+MM	4	0.00
+MN	1	0.00
+MN	3	0.00
+MN	5	0.00
+MN	2	0.00
+MN	4	0.00
+MO	1	0.00
+MO	3	0.00
+MO	5	4780.81
+MO	2	459.04
+MO	4	0.00
+MP	1	0.00
+MP	3	0.00
+MP	5	0.00
+MP	2	0.00
+MP	4	0.00
+MQ	1	0.00
+MQ	3	0.00
+MQ	5	0.00
+MQ	2	0.00
+MQ	4	2028.64
+MR	1	0.00
+MR	3	0.00
+MR	5	0.00
+MR	2	0.00
+MR	4	0.00
+MS	1	0.00
+MS	3	0.00
+MS	5	0.00
+MS	2	0.00
+MS	4	0.00
+MT	1	0.00
+MT	3	0.00
+MT	5	0.00
+MT	2	1944.27
+MT	4	0.00
+MU	1	0.00
+MU	3	0.00
+MU	5	0.00
+MU	2	0.00
+MU	4	132.08
+MV	1	0.00
+MV	3	1224.31
+MV	5	0.00
+MV	2	0.00
+MV	4	0.00
+MW	1	0.00
+MW	3	0.00
+MW	5	0.00
+MW	2	1477.25
+MW	4	0.00
+MX	1	716.68
+MX	3	0.00
+MX	5	350.90
+MX	2	0.00
+MX	4	0.00
+MY	1	0.00
+MY	3	1183.68
+MY	5	0.00
+MY	2	0.00
+MY	4	286.04
+MZ	1	0.00
+MZ	3	0.00
+MZ	5	0.00
+MZ	2	0.00
+MZ	4	0.00
+NA	1	0.00
+NA	3	0.00
+NA	5	0.00
+NA	2	0.00
+NA	4	4627.89
+NC	1	0.00
+NC	3	0.00
+NC	5	0.00
+NC	2	932.19
+NC	4	0.00
+NE	1	0.00
+NE	3	0.00
+NE	5	0.00
+NE	2	0.00
+NE	4	0.00
+NF	1	0.00
+NF	3	0.00
+NF	5	0.00
+NF	2	0.00
+NF	4	0.00
+NG	1	0.00
+NG	3	0.00
+NG	5	0.00
+NG	2	0.00
+NG	4	606.00
+NI	1	0.00
+NI	3	1799.88
+NI	5	0.00
+NI	2	2866.29
+NI	4	0.00
+NL	1	0.00
+NL	3	1370.09
+NL	5	0.00
+NL	2	67.86
+NL	4	0.00
+NO	1	0.00
+NO	3	5360.17
+NO	5	0.00
+NO	2	0.00
+NO	4	0.00
+NP	1	0.00
+NP	3	0.00
+NP	5	0.00
+NP	2	1751.88
+NP	4	0.00
+NR	1	0.00
+NR	3	0.00
+NR	5	0.00
+NR	2	0.00
+NR	4	0.00
+NU	1	0.00
+NU	3	0.00
+NU	5	0.00
+NU	2	0.00
+NU	4	0.00
+NZ	1	0.00
+NZ	3	0.00
+NZ	5	0.00
+NZ	2	1818.88
+NZ	4	0.00
+OM	1	1292.68
+OM	3	0.00
+OM	5	0.00
+OM	2	0.00
+OM	4	0.00
+PA	1	0.00
+PA	3	0.00
+PA	5	0.00
+PA	2	2164.45
+PA	4	593.60
+PE	1	2337.60
+PE	3	4014.86
+PE	5	0.00
+PE	2	0.00
+PE	4	0.00
+PF	1	0.00
+PF	3	0.00
+PF	5	790.40
+PF	2	0.00
+PF	4	0.00
+PG	1	0.00
+PG	3	1344.36
+PG	5	0.00
+PG	2	0.00
+PG	4	0.00
+PH	1	1267.69
+PH	3	0.00
+PH	5	0.00
+PH	2	1762.02
+PH	4	818.57
+PK	1	0.00
+PK	3	2999.55
+PK	5	0.00
+PK	2	5215.08
+PK	4	0.00
+PL	1	255.48
+PL	3	0.00
+PL	5	0.00
+PL	2	466.20
+PL	4	2351.40
+PM	1	0.00
+PM	3	0.00
+PM	5	0.00
+PM	2	0.00
+PM	4	0.00
+PN	1	0.00
+PN	3	0.00
+PN	5	0.00
+PN	2	0.00
+PN	4	0.00
+PR	1	468.65
+PR	3	300.41
+PR	5	0.00
+PR	2	1936.91
+PR	4	0.00
+PS	1	0.00
+PS	3	0.00
+PS	5	0.00
+PS	2	0.00
+PS	4	0.00
+PT	1	0.00
+PT	3	897.00
+PT	5	0.00
+PT	2	0.00
+PT	4	3616.10
+PW	1	0.00
+PW	3	0.00
+PW	5	0.00
+PW	2	0.00
+PW	4	0.00
+PY	1	0.00
+PY	3	0.00
+PY	5	3561.88
+PY	2	0.00
+PY	4	0.00
+QA	1	0.00
+QA	3	1466.28
+QA	5	0.00
+QA	2	5326.41
+QA	4	1203.62
+RE	1	0.00
+RE	3	0.00
+RE	5	709.60
+RE	2	0.00
+RE	4	0.00
+RO	1	0.00
+RO	3	0.00
+RO	5	0.00
+RO	2	199.02
+RO	4	0.00
+RS	1	0.00
+RS	3	0.00
+RS	5	0.00
+RS	2	0.00
+RS	4	0.00
+RU	1	0.00
+RU	3	0.00
+RU	5	0.00
+RU	2	0.00
+RU	4	0.00
+RW	1	0.00
+RW	3	0.00
+RW	5	0.00
+RW	2	0.00
+RW	4	0.00
+SA	1	0.00
+SA	3	764.52
+SA	5	1572.12
+SA	2	0.00
+SA	4	1043.26
+SB	1	0.00
+SB	3	0.00
+SB	5	0.00
+SB	2	0.00
+SB	4	0.00
+SC	1	2755.51
+SC	3	0.00
+SC	5	0.00
+SC	2	1195.56
+SC	4	545.22
+SD	1	0.00
+SD	3	0.00
+SD	5	0.00
+SD	2	0.00
+SD	4	0.00
+SE	1	375.65
+SE	3	5464.55
+SE	5	1575.50
+SE	2	0.00
+SE	4	0.00
+SG	1	0.00
+SG	3	0.00
+SG	5	0.00
+SG	2	0.00
+SG	4	0.00
+SH	1	0.00
+SH	3	0.00
+SH	5	0.00
+SH	2	0.00
+SH	4	0.00
+SI	1	0.00
+SI	3	0.00
+SI	5	941.85
+SI	2	888.96
+SI	4	3247.93
+SJ	1	0.00
+SJ	3	0.00
+SJ	5	0.00
+SJ	2	0.00
+SJ	4	0.00
+SK	1	3299.65
+SK	3	0.00
+SK	5	0.00
+SK	2	0.00
+SK	4	0.00
+SL	1	0.00
+SL	3	0.00
+SL	5	0.00
+SL	2	0.00
+SL	4	0.00
+SM	1	0.00
+SM	3	0.00
+SM	5	0.00
+SM	2	0.00
+SM	4	0.00
+SN	1	0.00
+SN	3	0.00
+SN	5	1036.55
+SN	2	0.00
+SN	4	0.00
+SO	1	0.00
+SO	3	0.00
+SO	5	0.00
+SO	2	0.00
+SO	4	0.00
+SR	1	0.00
+SR	3	0.00
+SR	5	0.00
+SR	2	89.42
+SR	4	0.00
+SS	1	0.00
+SS	3	0.00
+SS	5	0.00
+SS	2	0.00
+SS	4	0.00
+ST	1	0.00
+ST	3	0.00
+ST	5	0.00
+ST	2	0.00
+ST	4	0.00
+SV	1	0.00
+SV	3	0.00
+SV	5	0.00
+SV	2	6123.59
+SV	4	0.00
+SX	1	0.00
+SX	3	0.00
+SX	5	0.00
+SX	2	0.00
+SX	4	0.00
+SY	1	1807.00
+SY	3	0.00
+SY	5	0.00
+SY	2	0.00
+SY	4	3058.20
+SZ	1	0.00
+SZ	3	2970.68
+SZ	5	0.00
+SZ	2	0.00
+SZ	4	0.00
+TC	1	0.00
+TC	3	0.00
+TC	5	0.00
+TC	2	0.00
+TC	4	0.00
+TD	1	0.00
+TD	3	953.54
+TD	5	0.00
+TD	2	0.00
+TD	4	0.00
+TF	1	0.00
+TF	3	0.00
+TF	5	0.00
+TF	2	0.00
+TF	4	0.00
+TG	1	0.00
+TG	3	0.00
+TG	5	0.00
+TG	2	0.00
+TG	4	0.00
+TH	1	0.00
+TH	3	294.84
+TH	5	1595.05
+TH	2	0.00
+TH	4	1000.68
+TJ	1	0.00
+TJ	3	0.00
+TJ	5	0.00
+TJ	2	0.00
+TJ	4	0.00
+TK	1	0.00
+TK	3	0.00
+TK	5	0.00
+TK	2	0.00
+TK	4	0.00
+TL	1	0.00
+TL	3	0.00
+TL	5	0.00
+TL	2	0.00
+TL	4	0.00
+TM	1	0.00
+TM	3	0.00
+TM	5	0.00
+TM	2	0.00
+TM	4	0.00
+TN	1	0.00
+TN	3	0.00
+TN	5	0.00
+TN	2	0.00
+TN	4	0.00
+TO	1	0.00
+TO	3	0.00
+TO	5	0.00
+TO	2	0.00
+TO	4	0.00
+TR	1	0.00
+TR	3	828.20
+TR	5	0.00
+TR	2	0.00
+TR	4	0.00
+TT	1	0.00
+TT	3	2038.70
+TT	5	2700.60
+TT	2	487.68
+TT	4	0.00
+TV	1	0.00
+TV	3	0.00
+TV	5	0.00
+TV	2	0.00
+TV	4	0.00
+TW	1	0.00
+TW	3	0.00
+TW	5	0.00
+TW	2	4436.10
+TW	4	151.32
+TZ	1	0.00
+TZ	3	1400.09
+TZ	5	0.00
+TZ	2	0.00
+TZ	4	0.00
+UA	1	0.00
+UA	3	1255.14
+UA	5	744.94
+UA	2	0.00
+UA	4	976.04
+UG	1	0.00
+UG	3	0.00
+UG	5	0.00
+UG	2	0.00
+UG	4	0.00
+UM	1	0.00
+UM	3	0.00
+UM	5	0.00
+UM	2	0.00
+UM	4	0.00
+US	1	0.00
+US	3	0.00
+US	5	0.00
+US	2	926.26
+US	4	0.00
+UY	1	0.00
+UY	3	0.00
+UY	5	0.00
+UY	2	0.00
+UY	4	2472.60
+UZ	1	0.00
+UZ	3	0.00
+UZ	5	0.00
+UZ	2	0.00
+UZ	4	0.00
+VA	1	0.00
+VA	3	0.00
+VA	5	0.00
+VA	2	0.00
+VA	4	0.00
+VC	1	0.00
+VC	3	0.00
+VC	5	0.00
+VC	2	0.00
+VC	4	315.36
+VE	1	0.00
+VE	3	152.16
+VE	5	0.00
+VE	2	0.00
+VE	4	1005.12
+VG	1	0.00
+VG	3	0.00
+VG	5	0.00
+VG	2	0.00
+VG	4	0.00
+VI	1	0.00
+VI	3	0.00
+VI	5	496.20
+VI	2	866.84
+VI	4	0.00
+VN	1	0.00
+VN	3	0.00
+VN	5	588.42
+VN	2	0.00
+VN	4	2656.00
+VU	1	0.00
+VU	3	0.00
+VU	5	701.30
+VU	2	0.00
+VU	4	0.00
+WF	1	0.00
+WF	3	0.00
+WF	5	0.00
+WF	2	0.00
+WF	4	0.00
+WS	1	0.00
+WS	3	0.00
+WS	5	0.00
+WS	2	0.00
+WS	4	0.00
+XK	1	0.00
+XK	3	0.00
+XK	5	0.00
+XK	2	0.00
+XK	4	0.00
+YE	1	0.00
+YE	3	2704.40
+YE	5	0.00
+YE	2	0.00
+YE	4	0.00
+YT	1	0.00
+YT	3	0.00
+YT	5	0.00
+YT	2	0.00
+YT	4	0.00
+ZA	1	1432.86
+ZA	3	0.00
+ZA	5	0.00
+ZA	2	0.00
+ZA	4	1842.12
+ZM	1	343.44
+ZM	3	0.00
+ZM	5	0.00
+ZM	2	2448.20
+ZM	4	0.00
+ZW	1	0.00
+ZW	3	0.00
+ZW	5	0.00
+ZW	2	0.00
+ZW	4	0.00
+\.
+
+
+--
+-- TOC entry 3561 (class 0 OID 16930)
 -- Dependencies: 226
--- Data for Name: tipos_habitacion; Type: TABLE DATA; Schema: public; Owner: hezek
+-- Data for Name: tipos_habitacion; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.tipos_habitacion (tipo_habitacion_codigo, descripcion, tv_cable, frigobar, tipo_cama, cant_camas) FROM stdin;
@@ -93579,8 +94906,8 @@ COPY public.tipos_habitacion (tipo_habitacion_codigo, descripcion, tv_cable, fri
 
 
 --
--- TOC entry 3342 (class 2606 OID 16934)
--- Name: ciudades ciudades_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3350 (class 2606 OID 16934)
+-- Name: ciudades ciudades_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ciudades
@@ -93588,8 +94915,8 @@ ALTER TABLE ONLY public.ciudades
 
 
 --
--- TOC entry 3345 (class 2606 OID 16936)
--- Name: clientes clientes_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3353 (class 2606 OID 16936)
+-- Name: clientes clientes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.clientes
@@ -93597,8 +94924,8 @@ ALTER TABLE ONLY public.clientes
 
 
 --
--- TOC entry 3348 (class 2606 OID 16938)
--- Name: continentes continentes_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3356 (class 2606 OID 16938)
+-- Name: continentes continentes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.continentes
@@ -93606,8 +94933,8 @@ ALTER TABLE ONLY public.continentes
 
 
 --
--- TOC entry 3350 (class 2606 OID 16940)
--- Name: costos_habitacion costos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3358 (class 2606 OID 16940)
+-- Name: costos_habitacion costos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.costos_habitacion
@@ -93615,8 +94942,8 @@ ALTER TABLE ONLY public.costos_habitacion
 
 
 --
--- TOC entry 3353 (class 2606 OID 16942)
--- Name: divisiones_politicas divisiones_politicas_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3361 (class 2606 OID 16942)
+-- Name: divisiones_politicas divisiones_politicas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.divisiones_politicas
@@ -93624,8 +94951,8 @@ ALTER TABLE ONLY public.divisiones_politicas
 
 
 --
--- TOC entry 3356 (class 2606 OID 16944)
--- Name: estadias_anteriores estadias_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3364 (class 2606 OID 16944)
+-- Name: estadias_anteriores estadias_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.estadias_anteriores
@@ -93633,8 +94960,8 @@ ALTER TABLE ONLY public.estadias_anteriores
 
 
 --
--- TOC entry 3360 (class 2606 OID 16946)
--- Name: habitaciones habitaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3368 (class 2606 OID 16946)
+-- Name: habitaciones habitaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.habitaciones
@@ -93642,8 +94969,8 @@ ALTER TABLE ONLY public.habitaciones
 
 
 --
--- TOC entry 3363 (class 2606 OID 16948)
--- Name: hoteles hoteles_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3371 (class 2606 OID 16948)
+-- Name: hoteles hoteles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.hoteles
@@ -93651,8 +94978,8 @@ ALTER TABLE ONLY public.hoteles
 
 
 --
--- TOC entry 3368 (class 2606 OID 16950)
--- Name: limitan limitan_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3376 (class 2606 OID 16950)
+-- Name: limitan limitan_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.limitan
@@ -93660,8 +94987,8 @@ ALTER TABLE ONLY public.limitan
 
 
 --
--- TOC entry 3370 (class 2606 OID 16952)
--- Name: ocupaciones ocupaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3378 (class 2606 OID 16952)
+-- Name: ocupaciones ocupaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ocupaciones
@@ -93669,8 +94996,8 @@ ALTER TABLE ONLY public.ocupaciones
 
 
 --
--- TOC entry 3373 (class 2606 OID 16954)
--- Name: paises paises_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3381 (class 2606 OID 16954)
+-- Name: paises paises_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.paises
@@ -93678,8 +95005,8 @@ ALTER TABLE ONLY public.paises
 
 
 --
--- TOC entry 3377 (class 2606 OID 16956)
--- Name: reservas_anteriores reservas_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3385 (class 2606 OID 16956)
+-- Name: reservas_anteriores reservas_anteriores_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reservas_anteriores
@@ -93687,8 +95014,8 @@ ALTER TABLE ONLY public.reservas_anteriores
 
 
 --
--- TOC entry 3379 (class 2606 OID 16958)
--- Name: tipos_habitacion tipos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3387 (class 2606 OID 16958)
+-- Name: tipos_habitacion tipos_habitacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.tipos_habitacion
@@ -93696,112 +95023,120 @@ ALTER TABLE ONLY public.tipos_habitacion
 
 
 --
--- TOC entry 3346 (class 1259 OID 16959)
--- Name: iciudades_clientes; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3354 (class 1259 OID 16959)
+-- Name: iciudades_clientes; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iciudades_clientes ON public.clientes USING btree (pais_codigo, division_politica_codigo, ciudad_codigo);
 
 
 --
--- TOC entry 3364 (class 1259 OID 16960)
--- Name: iciudades_hoteles; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3372 (class 1259 OID 16960)
+-- Name: iciudades_hoteles; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iciudades_hoteles ON public.hoteles USING btree (pais_codigo, division_politica_codigo, ciudad_codigo);
 
 
 --
--- TOC entry 3357 (class 1259 OID 16961)
--- Name: iclientes_estadias_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3365 (class 1259 OID 16961)
+-- Name: iclientes_estadias_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iclientes_estadias_anteriores ON public.estadias_anteriores USING btree (cliente_documento);
 
 
 --
--- TOC entry 3374 (class 1259 OID 16962)
--- Name: iclientes_reservas_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3382 (class 1259 OID 16962)
+-- Name: iclientes_reservas_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX iclientes_reservas_anteriores ON public.reservas_anteriores USING btree (cliente_documento);
 
 
 --
--- TOC entry 3371 (class 1259 OID 16963)
--- Name: icontinentes; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3379 (class 1259 OID 16963)
+-- Name: icontinentes; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX icontinentes ON public.paises USING btree (continente_codigo);
 
 
 --
--- TOC entry 3343 (class 1259 OID 16964)
--- Name: idivisiones_politicas; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3351 (class 1259 OID 16964)
+-- Name: idivisiones_politicas; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idivisiones_politicas ON public.ciudades USING btree (pais_codigo, division_politica_codigo);
 
 
 --
--- TOC entry 3351 (class 1259 OID 16965)
--- Name: ihabitaciones_costoshabitacion; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3359 (class 1259 OID 16965)
+-- Name: ihabitaciones_costoshabitacion; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_costoshabitacion ON public.costos_habitacion USING btree (hotel_codigo, nro_habitacion);
 
 
 --
--- TOC entry 3358 (class 1259 OID 16966)
--- Name: ihabitaciones_estadias_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3366 (class 1259 OID 16966)
+-- Name: ihabitaciones_estadias_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_estadias_anteriores ON public.estadias_anteriores USING btree (hotel_codigo, nro_habitacion);
 
 
 --
--- TOC entry 3375 (class 1259 OID 16967)
--- Name: ihabitaciones_reservas_anteriores; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3383 (class 1259 OID 16967)
+-- Name: ihabitaciones_reservas_anteriores; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_reservas_anteriores ON public.reservas_anteriores USING btree (hotel_codigo, nro_habitacion);
 
 
 --
--- TOC entry 3361 (class 1259 OID 16968)
--- Name: ihabitaciones_tiposhabitacion; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3369 (class 1259 OID 16968)
+-- Name: ihabitaciones_tiposhabitacion; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ihabitaciones_tiposhabitacion ON public.habitaciones USING btree (tipo_habitacion_codigo);
 
 
 --
--- TOC entry 3354 (class 1259 OID 16969)
--- Name: ipaises; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3362 (class 1259 OID 16969)
+-- Name: ipaises; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ipaises ON public.divisiones_politicas USING btree (pais_codigo);
 
 
 --
--- TOC entry 3365 (class 1259 OID 16970)
--- Name: ipaises1; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3373 (class 1259 OID 16970)
+-- Name: ipaises1; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ipaises1 ON public.limitan USING btree (pais1_codigo);
 
 
 --
--- TOC entry 3366 (class 1259 OID 16971)
--- Name: ipaises2; Type: INDEX; Schema: public; Owner: hezek
+-- TOC entry 3374 (class 1259 OID 16971)
+-- Name: ipaises2; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX ipaises2 ON public.limitan USING btree (pais2_codigo);
 
 
 --
--- TOC entry 3381 (class 2606 OID 16972)
--- Name: clientes fciudades_clientes; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3403 (class 2620 OID 17104)
+-- Name: costos_habitacion control_costos; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER control_costos BEFORE DELETE OR UPDATE ON public.costos_habitacion FOR EACH ROW EXECUTE FUNCTION public.control_costos();
+
+
+--
+-- TOC entry 3389 (class 2606 OID 16972)
+-- Name: clientes fciudades_clientes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.clientes
@@ -93809,8 +95144,8 @@ ALTER TABLE ONLY public.clientes
 
 
 --
--- TOC entry 3389 (class 2606 OID 16977)
--- Name: hoteles fciudades_hoteles; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3397 (class 2606 OID 16977)
+-- Name: hoteles fciudades_hoteles; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.hoteles
@@ -93818,8 +95153,8 @@ ALTER TABLE ONLY public.hoteles
 
 
 --
--- TOC entry 3385 (class 2606 OID 16982)
--- Name: estadias_anteriores fclientes_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3393 (class 2606 OID 16982)
+-- Name: estadias_anteriores fclientes_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.estadias_anteriores
@@ -93827,8 +95162,8 @@ ALTER TABLE ONLY public.estadias_anteriores
 
 
 --
--- TOC entry 3393 (class 2606 OID 16987)
--- Name: reservas_anteriores fclientes_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3401 (class 2606 OID 16987)
+-- Name: reservas_anteriores fclientes_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reservas_anteriores
@@ -93836,8 +95171,8 @@ ALTER TABLE ONLY public.reservas_anteriores
 
 
 --
--- TOC entry 3392 (class 2606 OID 16992)
--- Name: paises fcontinentes; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3400 (class 2606 OID 16992)
+-- Name: paises fcontinentes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.paises
@@ -93845,8 +95180,8 @@ ALTER TABLE ONLY public.paises
 
 
 --
--- TOC entry 3380 (class 2606 OID 16997)
--- Name: ciudades fdivisiones_politicas; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3388 (class 2606 OID 16997)
+-- Name: ciudades fdivisiones_politicas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ciudades
@@ -93854,8 +95189,8 @@ ALTER TABLE ONLY public.ciudades
 
 
 --
--- TOC entry 3383 (class 2606 OID 17002)
--- Name: costos_habitacion fhabitaciones_costoshabitacion; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3391 (class 2606 OID 17002)
+-- Name: costos_habitacion fhabitaciones_costoshabitacion; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.costos_habitacion
@@ -93863,8 +95198,8 @@ ALTER TABLE ONLY public.costos_habitacion
 
 
 --
--- TOC entry 3386 (class 2606 OID 17007)
--- Name: estadias_anteriores fhabitaciones_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3394 (class 2606 OID 17007)
+-- Name: estadias_anteriores fhabitaciones_estadias_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.estadias_anteriores
@@ -93872,8 +95207,8 @@ ALTER TABLE ONLY public.estadias_anteriores
 
 
 --
--- TOC entry 3394 (class 2606 OID 17012)
--- Name: reservas_anteriores fhabitaciones_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3402 (class 2606 OID 17012)
+-- Name: reservas_anteriores fhabitaciones_reservas_anteriores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reservas_anteriores
@@ -93881,8 +95216,8 @@ ALTER TABLE ONLY public.reservas_anteriores
 
 
 --
--- TOC entry 3387 (class 2606 OID 17017)
--- Name: habitaciones fhoteles_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3395 (class 2606 OID 17017)
+-- Name: habitaciones fhoteles_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.habitaciones
@@ -93890,8 +95225,8 @@ ALTER TABLE ONLY public.habitaciones
 
 
 --
--- TOC entry 3382 (class 2606 OID 17022)
--- Name: clientes focupaciones_clientes; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3390 (class 2606 OID 17022)
+-- Name: clientes focupaciones_clientes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.clientes
@@ -93899,8 +95234,8 @@ ALTER TABLE ONLY public.clientes
 
 
 --
--- TOC entry 3384 (class 2606 OID 17027)
--- Name: divisiones_politicas fpaises; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3392 (class 2606 OID 17027)
+-- Name: divisiones_politicas fpaises; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.divisiones_politicas
@@ -93908,8 +95243,8 @@ ALTER TABLE ONLY public.divisiones_politicas
 
 
 --
--- TOC entry 3390 (class 2606 OID 17032)
--- Name: limitan fpaises1; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3398 (class 2606 OID 17032)
+-- Name: limitan fpaises1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.limitan
@@ -93917,8 +95252,8 @@ ALTER TABLE ONLY public.limitan
 
 
 --
--- TOC entry 3391 (class 2606 OID 17037)
--- Name: limitan fpaises2; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3399 (class 2606 OID 17037)
+-- Name: limitan fpaises2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.limitan
@@ -93926,15 +95261,15 @@ ALTER TABLE ONLY public.limitan
 
 
 --
--- TOC entry 3388 (class 2606 OID 17042)
--- Name: habitaciones ftiposhabitacion_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: hezek
+-- TOC entry 3396 (class 2606 OID 17042)
+-- Name: habitaciones ftiposhabitacion_habitaciones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.habitaciones
     ADD CONSTRAINT ftiposhabitacion_habitaciones FOREIGN KEY (tipo_habitacion_codigo) REFERENCES public.tipos_habitacion(tipo_habitacion_codigo);
 
 
--- Completed on 2023-10-10 01:55:04 -03
+-- Completed on 2023-10-12 20:38:09 -03
 
 --
 -- PostgreSQL database dump complete
@@ -93953,7 +95288,7 @@ ALTER TABLE ONLY public.habitaciones
 -- Dumped from database version 15.4 (Ubuntu 15.4-2.pgdg22.04+1)
 -- Dumped by pg_dump version 16.0 (Ubuntu 16.0-1.pgdg22.04+1)
 
--- Started on 2023-10-10 01:55:04 -03
+-- Started on 2023-10-12 20:38:09 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -93968,21 +95303,19 @@ SET row_security = off;
 
 --
 -- TOC entry 5 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: hezek
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
 --
 
 -- *not* creating schema, since initdb creates it
 
 
-ALTER SCHEMA public OWNER TO hezek;
-
--- Completed on 2023-10-10 01:55:04 -03
+-- Completed on 2023-10-12 20:38:09 -03
 
 --
 -- PostgreSQL database dump complete
 --
 
--- Completed on 2023-10-10 01:55:04 -03
+-- Completed on 2023-10-12 20:38:09 -03
 
 --
 -- PostgreSQL database cluster dump complete
