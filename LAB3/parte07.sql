@@ -50,7 +50,7 @@ BEGIN
 			
         ELSEIF (TG_OP = 'UPDATE') THEN
         	--existe tupla finguitos asociado a la estadia?
-        	IF (EXISTS SELECT 1 FROM finguitos_usuarios WHERE 
+        	IF EXISTS (SELECT 1 FROM finguitos_usuarios WHERE 
         			OLD.hotel_codigo = NEW.hotel_codigo AND
         			OLD.cliente_documento = NEW.cliente_documento AND
 					OLD.check_in = NEW.check_in) THEN
@@ -66,8 +66,8 @@ BEGIN
 	        	fecha_inicio := NEW.check_in + INTERVAL '1 month';
 	        	fecha_fin := NEW.check_out + INTERVAL '2 years';				
 	        
-				UPDATE finguitos_usuarios SET check_in = NEW.check_in AND check_out = NEW.check_out AND fecha_operacion = now AND
-					finguitos = monto_finguitos AND fecha_inicio = fecha_inicio AND fecha_fin = fecha_fin AND estado = 1 WHERE 
+				UPDATE finguitos_usuarios SET check_in = NEW.check_in, check_out = NEW.check_out, fecha_operacion = now,
+					finguitos = monto_finguitos, fecha_inicio = fecha_inicio, fecha_fin = fecha_fin, estado = 1 WHERE 
 					cliente_documento = NEW.cliente_documento AND hotel_codigo = NEW.hotel_codigo AND 
 					check_in = NEW.check_in;
         	END IF;
@@ -76,7 +76,7 @@ BEGIN
 				cliente_documento = NEW.cliente_documento AND fecha_fin < CURRENT_DATE;
 			
         ELSEIF (TG_OP = 'DELETE') THEN 
-			UPDATE finguitos_usuarios SET fecha_operacion = now AND estado = 3 WHERE --vencido
+			UPDATE finguitos_usuarios SET fecha_operacion = now, estado = 3 WHERE --vencido
 				cliente_documento = OLD.cliente_documento AND hotel_codigo = OLD.hotel_codigo AND 
 				check_in = OLD.check_in;
         END IF;
