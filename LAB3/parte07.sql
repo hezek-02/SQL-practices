@@ -1,24 +1,67 @@
-CREATE OR REPLACE FUNCTION control_costos() RETURNS TRIGGER AS $control_costos$
-    BEGIN
-        IF (TG_OP = 'UPDATE' AND (NEW.precio_noche IS NULL OR NEW.precio_noche <= 0)) THEN
-            RAISE NOTICE 'La actualización no es correcta';
-           	RETURN NULL;
-        ELSIF (TG_OP = 'DELETE' AND EXISTS (SELECT 1 FROM estadias e WHERE 
-        e.hotel_codigo = OLD.hotel_codigo AND 
-        e.nro_habitacion = OLD.nro_habitacion AND --join estadia costo hab
-        OLD.fecha_desde = 	--identifica si la fecha desde
-				(SELECT  MAX(fecha_desde) FROM costos_habitacion ch2 WHERE 
-					ch2.hotel_codigo = e.hotel_codigo  AND 
-					ch2.nro_habitacion  = e.nro_habitacion  AND 
-					ch2.fecha_desde <= e.check_in
-					) ) ) THEN
-            RAISE NOTICE 'La operación de borrado no es correcta';
-            RETURN NULL;
+CREATE TABLE IF NOT EXISTS finguitos_usuarios (
+    cliente_documento int4,
+    hotel_codigo int4,
+    check_in date,
+    check_out date,
+    fecha_inicio date, 
+    fecha_fin date,
+    finguitos int,
+    fecha_operacion timestamp,
+    tipo_estado smallint
+);
+
+CREATE OR REPLACE FUNCTION finguitos() RETURNS TRIGGER AS $finguitos$
+DECLARE 
+	monto_finguitos INTEGER;
+	precio_por_noche NUMERIC(5,2);
+	fecha_fin date;
+	fecha_inicio date;
+	tipo_estado INTEGER;
+BEGIN
+        IF (TG_OP = 'INSERT') THEN
+        	--hallar precio_noche actualizado
+        	SELECT precio_noche INTO precio_por_noche FROM costos_habitacion WHERE
+        	hotel_codigo = NEW.hotel_codigo AND nro_habitacion = NEW.nro_habitacion AND
+			fecha_desde = (
+			    SELECT MAX(fecha_desde) 
+			    FROM costos_habitacion
+			);
+        	monto_finguitos :=  TRUNC((NEW.check_out - NEW.check_in)* precio_por_noche/10);
+        	fecha_inicio := NEW.check_in + INTERVAL '1 month';
+        	fecha_fin := NEW.check_out + INTERVAL '2 years';
+        	
+        	IF (fecha_fin >= CURRENT_DATE) THEN
+        		tipo_estado := 1;
+        	ELSEIF (fecha_fin < CURRENT_DATE) THEN
+        		tipo_estado := 2;
+        	END IF;
+        
+        	--inserción nueva tupla
+            INSERT INTO finguitos_usuarios (cliente_documento, hotel_codigo, check_in, check_out,
+            fecha_inicio, fecha_fin, finguitos, fecha_operacion, estado) VALUES 
+	            (NEW.cliente_documento, NEW.hotel_codigo, NEW.check_in, NEW.check_out, fecha_inicio, fecha_fin,
+	           	monto_finguitos, now, tipo_estado);
+	           
+            --verificar historico finguitos
+			UPDATE finguitos_usuarios SET estado = 2  WHERE --vencido
+				cliente_documento = NEW.cliente_documento AND fecha_fin < CURRENT_DATE;
+        ELSEIF (TG_OP = 'UPDATE') THEN
+        	--existe tupla finguitos asociado a la estadia?
+        	IF (EXISTS SELECT 1 FROM finguitos_usuarios WHERE 
+        			OLD.hotel_codigo = NEW.hotel_codigo AND
+        			OLD.cliente_documento = NEW.cliente_documento AND
+					OLD.check_in = NEW.check_in) THEN
+				
+        	
+        	END IF;
+        ELSEIF (TG_OP = 'DELETE') THEN 
+        
         END IF;
-        RETURN NEW;
     END;
-$control_costos$ LANGUAGE plpgsql;
+$finguitos$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER finguitos
-BEFORE UPDATE OR DELETE ON estadias_anteriores
+AFTER INSERT ON estadias_anteriores
     FOR EACH ROW EXECUTE FUNCTION finguitos();
+
+   

@@ -43,18 +43,13 @@ SELECT  ea1.hotel_codigo,ea1.nro_habitacion,ea1.check_in,ea1.check_out  FROM
 				)
 		GROUP BY tipo_habitacion_codigo
 		
-SELECT * FROM ingreso_extra(6463689);
+SELECT * FROM ingreso_extra(2);
 SELECT * FROM ingreso_extra(6463694);--this
 SELECT * FROM ingreso_extra(6465286);
 
 SELECT * FROM	hoteles h
    		WHERE h.pais_codigo = 'AD'
 --parte03
-CREATE TABLE IF NOT EXISTS resumen (
-    pais_codigo bpchar(2),
-    cant_estrellas int2,--eq smallint
-    total_extra NUMERIC(10,2)
-);
 
 CALL  generar_reporte();
 

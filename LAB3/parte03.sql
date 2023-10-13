@@ -1,5 +1,11 @@
+CREATE TABLE IF NOT EXISTS resumen (
+    pais_codigo bpchar(2),
+    cant_estrellas int2,--eq smallint
+    total_extra NUMERIC(10,2)
+);
+
 CREATE OR REPLACE PROCEDURE generar_reporte()
-AS $$
+AS $generar_reporte$
 DECLARE 
     pais bpchar(2);
     cant_estrellas int2;--eq smallint
@@ -29,5 +35,5 @@ BEGIN
 	    END LOOP;
     END LOOP;
 END;
-$$ LANGUAGE plpgsql;
+$generar_reporte$ LANGUAGE plpgsql;
 	

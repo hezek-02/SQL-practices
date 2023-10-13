@@ -1,7 +1,7 @@
 -- Crear la función actividad_cliente
 CREATE OR REPLACE FUNCTION actividad_cliente(codigo CHAR(1), clientedoc INTEGER, anio INTEGER)
 RETURNS INTEGER AS 
-$$--delimita rango de la funcion
+$actividad_cliente$--delimita rango de la funcion
 DECLARE 
 	cantidad INTEGER;
 BEGIN
@@ -28,5 +28,5 @@ BEGIN
 
     RETURN cantidad;
 END;
-$$
+$actividad_cliente$
 LANGUAGE plpgsql;
