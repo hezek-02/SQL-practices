@@ -26,8 +26,7 @@ DECLARE
 	fecha_inicial date;
 	tipo_estado INTEGER;
 BEGIN
-	/*
-	Innecesario por claves foráneas de estadias_anteriores lo dejo planteado
+	
 	IF NOT EXISTS (SELECT 1 FROM hoteles WHERE hotel_codigo = NEW.hotel_codigo) AND (TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN 
 		RAISE NOTICE 'No existe el hotel';
 		ROLLBACK;
@@ -37,7 +36,6 @@ BEGIN
 		ROLLBACK;
 		RETURN NULL;
 	END IF;
-	*/
 	
 --hallar precio_noche actualizado
 	SELECT precio_noche INTO precio_por_noche FROM costos_habitacion ch WHERE
@@ -64,18 +62,9 @@ BEGIN
     		monto_finguitos :=  monto_finguitos + 5;
     	END IF;
     	--inserción nueva tupla
-        INSERT INTO finguitos_usuarios 
-        (cliente_documento, 
-        hotel_codigo, 
-        check_in, 
-        check_out,
-        fecha_inicio, 
-        fecha_fin, 
-        finguitos, 
-        fecha_operacion, 
-        estado) 
-        VALUES 
-        (NEW.cliente_documento,
+        INSERT INTO finguitos_usuarios  (cliente_documento, hotel_codigo, check_in, check_out, fecha_inicio, fecha_fin, 
+        finguitos, fecha_operacion, estado) VALUES (
+        NEW.cliente_documento,
         NEW.hotel_codigo,
         NEW.check_in,
         NEW.check_out,

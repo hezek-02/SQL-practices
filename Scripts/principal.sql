@@ -1,8 +1,3 @@
-
-SELECT * FROM reservas_anteriores ra 
-SELECT * FROM estadias_anteriores ea  
-SELECT * FROM clientes   
---DROP FUNCTION actividad_cliente(char, integer, integer); innecesario por replace
 --parte01
 SELECT actividad_cliente('r', 81449752, 2011) ;
 SELECT actividad_cliente('e', 81449752, 2011) ;
@@ -73,9 +68,14 @@ SELECT  * FROM costos_habitacion ch JOIN estadias_anteriores e ON
 		
 --lo deje como seguro por si se borr--Lo dejo comenta
 --Lo dejo comenta
-aba		
 INSERT INTO public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) VALUES(6463694, 100, '2006-06-11', 15.67, 34.04);
 SELECT * FROM costos_habitacion ch  WHERE hotel_codigo = 6463694 AND nro_habitacion=100  AND fecha_desde ='2006-06-11'
+
+--parte05
+
+
+
+--parte06
 
 
 --parte07
