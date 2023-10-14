@@ -1,5 +1,9 @@
+CREATE SEQUENCE IF NOT EXISTS logidseq  
+    START WITH 1
+    INCREMENT BY 1;
+
 CREATE TABLE IF NOT EXISTS audit_estadia (
-    idop int4 NOT NULL ,
+    idop int4 DEFAULT nextval('logidseq') NOT NULL ,
     accion CHAR(1) NOT NULL ,
     fecha DATE NOT NULL ,
     usuario TEXT NOT NULL ,
@@ -10,11 +14,7 @@ CREATE TABLE IF NOT EXISTS audit_estadia (
     PRIMARY KEY (idop)
 );
 
-CREATE SEQUENCE IF NOT EXISTS logidseq  
-    START WITH 1
-    INCREMENT BY 1
-	OWNED BY audit_estadia.idop;
-   
+
 --Lo dejo comentado por si la idea no es usar llaves foráneas
 --ALTER TABLE ONLY audit_estadia
 --    ADD CONSTRAINT fhabitaciones_audit_estadia FOREIGN KEY (hotel_codigo,nro_habitacion) REFERENCES habitaciones(hotel_codigo,nro_habitacion);
@@ -40,8 +40,9 @@ CREATE OR REPLACE FUNCTION auditoria_estadias() RETURNS TRIGGER AS $auditoria_es
 	END IF;   
 	    
 	IF (TG_OP = 'INSERT') THEN
-		INSERT INTO audit_estadia (accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
+		INSERT INTO audit_estadia (idop, accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
 	    	VALUES (
+	    	nextval('logidseq'),
 	        'I',
 	        current_date,
 	        current_user,
@@ -51,8 +52,9 @@ CREATE OR REPLACE FUNCTION auditoria_estadias() RETURNS TRIGGER AS $auditoria_es
 	        NEW.check_in);
 	
 	ELSEIF (TG_OP = 'UPDATE') THEN
-		INSERT INTO audit_estadia (accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
+		INSERT INTO audit_estadia (idop, accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
 	    	VALUES (
+	    	nextval('logidseq'),
 	        'U',
 	        current_date,
 	        current_user,

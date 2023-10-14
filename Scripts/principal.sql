@@ -71,12 +71,18 @@ SELECT  * FROM costos_habitacion ch JOIN estadias_anteriores e ON
 INSERT INTO public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) VALUES(6463694, 100, '2006-06-11', 15.67, 34.04);
 SELECT * FROM costos_habitacion ch  WHERE hotel_codigo = 6463694 AND nro_habitacion=100  AND fecha_desde ='2006-06-11'
 
+--parte04
+SELECT  * FROM registro_uso
+SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
+SELECT * FROM reservas_anteriores ra  ea ORDER BY check_in  DESC
+SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
+
 --parte05
 
 
 
 --parte06
-
+SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
 
 --parte07
 SELECT * FROM finguitos_usuarios ORDER BY fecha_operacion  DESC
