@@ -71,11 +71,25 @@ SELECT  * FROM costos_habitacion ch JOIN estadias_anteriores e ON
 			e.check_in = ra.check_in 
 		)
 		
---lo deje como seguro por si se borraba		
+--lo deje como seguro por si se borr--Lo dejo comenta
+--Lo dejo comenta
+aba		
 INSERT INTO public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) VALUES(6463694, 100, '2006-06-11', 15.67, 34.04);
 SELECT * FROM costos_habitacion ch  WHERE hotel_codigo = 6463694 AND nro_habitacion=100  AND fecha_desde ='2006-06-11'
 
 
+--parte07
+SELECT * FROM finguitos_usuarios ORDER BY fecha_operacion  DESC
+SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
+INSERT INTO public.estadias_anteriores
+(hotel_codigo, nro_habitacion, cliente_documento, check_in, check_out)
+VALUES(2605099, 101, 56367622, '2022-12-15', '2023-12-21');
+SELECT * FROM costos_habitacion ch WHERE hotel_codigo = 2605099 AND nro_habitacion = 101
 
 
-
+SELECT * FROM estadias_anteriores ea WHERE hotel_codigo = 2605099 AND 
+    		 cliente_documento = 56367622 AND check_in <>'2020-12-11'  
+    		 
+INSERT INTO public.estadias_anteriores
+(hotel_codigo, nro_habitacion, cliente_documento, check_in, check_out)
+VALUES(2605099, 101, 56367622, '2010-12-15', '2010-12-22');

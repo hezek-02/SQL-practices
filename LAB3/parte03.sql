@@ -1,9 +1,14 @@
 CREATE TABLE IF NOT EXISTS resumen (
-    pais_codigo bpchar(2),
-    cant_estrellas int2,--eq smallint
-    total_extra NUMERIC(10,2)
+    pais_codigo bpchar(2) ,
+    cant_estrellas int2 ,--eq smallint
+    total_extra NUMERIC(10,2),
+    PRIMARY KEY (pais_codigo, cant_estrellas)
 );
 
+--Lo dejo comentado por si la idea no es usar llaves foráneas
+--ALTER TABLE ONLY resumen
+--    ADD CONSTRAINT fpaises_resumen FOREIGN KEY (pais_codigo) REFERENCES paises(pais_codigo);
+   
 CREATE OR REPLACE PROCEDURE generar_reporte()
 AS $generar_reporte$
 DECLARE 

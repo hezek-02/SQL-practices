@@ -39,6 +39,7 @@
 			}
 		}
 	},
+	"virtual-models": {"postgres-jdbc-18b17d268be-38d99a09bb688c8e":{"lab3_fbd":{"public":{":finguitos_usuarios":{"constraints":{"VIRTUAL_PK":{"type":"vpk","attributes":["cliente_documento","hotel_codigo","fecha_operacion"]}}}}}}},
 	"connection-types": {
 		"dev": {
 			"name": "Development",
