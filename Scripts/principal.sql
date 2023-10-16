@@ -1,9 +1,28 @@
---parte01
-SELECT actividad_cliente('r', 81449752, 2011) ;
-SELECT actividad_cliente('e', 81449752, 2011) ;
+--parte01 CORRECTO
+SELECT actividad_cliente('r', 86947966, 2010) ;
+SELECT actividad_cliente('R', 86947966, 2010) ;
+
+SELECT actividad_cliente('e', 33969052, 2010) ;
+SELECT actividad_cliente('E', 33969052, 2010) ;
+
 SELECT actividad_cliente('z', 81449752, 2011) ;
 SELECT actividad_cliente('z', 312, 2011) ;
 SELECT actividad_cliente('E', 312, 2011) ;
+
+SELECT cliente_documento,COUNT(*)   FROM reservas_anteriores
+WHERE EXTRACT(YEAR FROM fecha_reserva) = 2010
+GROUP BY cliente_documento having count(*) > 1
+
+SELECT * FROM reservas_anteriores ra2  WHERE 
+cliente_documento = 86947966
+
+SELECT cliente_documento,COUNT(*)   FROM estadias_anteriores ea 
+WHERE EXTRACT(YEAR FROM check_in) = 2010
+GROUP BY cliente_documento having count(*) > 1
+
+SELECT * FROM estadias_anteriores ra2  WHERE 
+cliente_documento = 33969052
+
 
 --parte02
 SELECT  ea1.hotel_codigo,ea1.nro_habitacion,ea1.check_in,ea1.check_out  FROM
@@ -40,15 +59,17 @@ SELECT  ea1.hotel_codigo,ea1.nro_habitacion,ea1.check_in,ea1.check_out  FROM
 		
 SELECT * FROM ingreso_extra(2);
 SELECT * FROM ingreso_extra(6463694);--this
-SELECT * FROM ingreso_extra(6465286);
+SELECT * FROM ingreso_extra(6468804);
 
-SELECT * FROM	hoteles h
-   		WHERE h.pais_codigo = 'AD'
+
 --parte03
-
+SELECT * FROM	hoteles h
+   		WHERE h.pais_codigo = 'AF'
+SELECT * FROM ingreso_extra(6525872);--this
+   		
 CALL  generar_reporte();
 
-SELECT * FROM resumen
+SELECT * FROM resumen ORDER BY pais_codigo,cant_estrellas  DESC
 DELETE FROM resumen r 
 
 --parte04
@@ -68,17 +89,46 @@ SELECT  * FROM costos_habitacion ch JOIN estadias_anteriores e ON
 		
 --lo deje como seguro por si se borr--Lo dejo comenta
 --Lo dejo comenta
-INSERT INTO public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) VALUES(6463694, 100, '2006-06-11', 15.67, 34.04);
-SELECT * FROM costos_habitacion ch  WHERE hotel_codigo = 6463694 AND nro_habitacion=100  AND fecha_desde ='2006-06-11'
 
 --parte04
+		
+INSERT INTO public.costos_habitacion (hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche) VALUES(6463694, 100, '2006-06-11', 15.67, 34.04);
+SELECT * FROM costos_habitacion ch  WHERE hotel_codigo = 6461797 AND nro_habitacion=100
+SELECT * FROM costos_habitacion ch  WHERE 
+hotel_codigo = 6461797 AND nro_habitacion=101
+
+INSERT INTO public.costos_habitacion
+(hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche)
+VALUES(6461797, 100, '2019-12-09', 10.00, 23.00);
+
+INSERT INTO public.costos_habitacion
+(hotel_codigo, nro_habitacion, fecha_desde, costo_noche, precio_noche)
+VALUES(6461797, 100, '2004-12-09', 10.00, 23.00);
+SELECT *  FROM estadias_anteriores e NATURAL JOIN costos_habitacion ch3  WHERE --identifica si afecta una estadia
+hotel_codigo = 6461797 AND        
+e.nro_habitacion = 100 AND 
+        ch3.fecha_desde = 	
+				(SELECT  MAX(fecha_desde) FROM costos_habitacion ch2 WHERE 
+					ch2.hotel_codigo = e.hotel_codigo  AND 
+					ch2.nro_habitacion  = e.nro_habitacion  AND 
+					ch2.fecha_desde <= e.check_in
+					)   AND 
+	    NOT EXISTS (SELECT 1 FROM costos_habitacion ch WHERE --No existe otro costo asociado que lo suplante
+		        ch.hotel_codigo = e.hotel_codigo AND 
+		        ch.nro_habitacion = e.nro_habitacion AND 
+		        ch.fecha_desde < ch3.fecha_desde )
+
+SELECT * FROM estadias e NATURAL JOIN costos_habitacion ch3 WHERE --La fecha excede el check_in, osea queda estadia sin precio
+		        	e.hotel_codigo = 6461797 AND 
+		        	e.nro_habitacion = 100 AND 
+		       		fecha_desde > e.check_in 		        
+--parte05
+
+
 SELECT  * FROM registro_uso
 SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
 SELECT * FROM reservas_anteriores ra  ea ORDER BY check_in  DESC
 SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
-
---parte05
-
 
 
 --parte06

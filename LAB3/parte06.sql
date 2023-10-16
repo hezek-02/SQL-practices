@@ -1,6 +1,7 @@
 CREATE SEQUENCE IF NOT EXISTS logidseq  
     START WITH 1
-    INCREMENT BY 1;
+    INCREMENT BY 1
+    MINVALUE 1;
 
 CREATE TABLE IF NOT EXISTS audit_estadia (
     idop int4 DEFAULT nextval('logidseq') NOT NULL ,
@@ -14,7 +15,6 @@ CREATE TABLE IF NOT EXISTS audit_estadia (
     PRIMARY KEY (idop)
 );
 
-
 --Lo dejo comentado por si la idea no es usar llaves foráneas
 --ALTER TABLE ONLY audit_estadia
 --    ADD CONSTRAINT fhabitaciones_audit_estadia FOREIGN KEY (hotel_codigo,nro_habitacion) REFERENCES habitaciones(hotel_codigo,nro_habitacion);
@@ -25,19 +25,7 @@ CREATE TABLE IF NOT EXISTS audit_estadia (
 CREATE OR REPLACE FUNCTION auditoria_estadias() RETURNS TRIGGER AS $auditoria_estadias$
     BEGIN
 	--control integridad
-	IF NOT EXISTS (SELECT 1 FROM habitaciones WHERE hotel_codigo = NEW.hotel_codigo AND 
-		nro_habitacion = NEW.nro_habitacion) AND (TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN 
-		
-		RAISE NOTICE 'No existe el hotel';
-		ROLLBACK;
-		RETURN NULL;
-	ELSEIF NOT EXISTS (SELECT 1 FROM clientes WHERE cliente_documento  = NEW.cliente_documento) AND 
-		(TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN
-		
-		RAISE NOTICE 'No existe el cliente';
-		ROLLBACK;
-		RETURN NULL;
-	END IF;   
+
 	    
 	IF (TG_OP = 'INSERT') THEN
 		INSERT INTO audit_estadia (idop, accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
@@ -73,7 +61,6 @@ CREATE OR REPLACE FUNCTION auditoria_estadias() RETURNS TRIGGER AS $auditoria_es
 	        OLD.hotel_codigo,
 	        OLD.nro_habitacion,
 	        OLD.check_in);
-	
 	END IF;
         RETURN NEW;
     END;
