@@ -9,6 +9,7 @@ BEGIN
     -- Verificar si el cliente existe
     IF NOT EXISTS (SELECT 1 FROM clientes WHERE cliente_documento = clientedoc) THEN
         RAISE NOTICE 'No existe el cliente';
+       	cantidad := -1;
     -- Calcular la cantidad de reservas o estadías según el código
     ELSIF codigo = 'R' OR codigo = 'r' THEN
 	        SELECT COUNT(*) INTO cantidad FROM reservas_anteriores
@@ -20,6 +21,7 @@ BEGIN
 	        AND EXTRACT(YEAR FROM check_in) = anio;
     ELSE
         RAISE NOTICE 'Código de operación incorrecto';
+       	cantidad := -1;
     END IF;
 
     RETURN cantidad;
