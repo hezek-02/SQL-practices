@@ -28,9 +28,8 @@ CREATE OR REPLACE FUNCTION auditoria_estadias() RETURNS TRIGGER AS $auditoria_es
 
 	    
 	IF (TG_OP = 'INSERT') THEN
-		INSERT INTO audit_estadia (idop, accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
+		INSERT INTO audit_estadia (accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
 	    	VALUES (
-	    	nextval('logidseq'),
 	        'I',
 	        current_date,
 	        current_user,
@@ -40,9 +39,8 @@ CREATE OR REPLACE FUNCTION auditoria_estadias() RETURNS TRIGGER AS $auditoria_es
 	        NEW.check_in);
 	
 	ELSEIF (TG_OP = 'UPDATE') THEN
-		INSERT INTO audit_estadia (idop, accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
+		INSERT INTO audit_estadia (accion, fecha, usuario, cliente_documento, hotel_codigo, nro_habitacion, check_in)
 	    	VALUES (
-	    	nextval('logidseq'),
 	        'U',
 	        current_date,
 	        current_user,
@@ -67,5 +65,5 @@ CREATE OR REPLACE FUNCTION auditoria_estadias() RETURNS TRIGGER AS $auditoria_es
 $auditoria_estadias$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER auditoria_estadias
-BEFORE UPDATE OR DELETE OR INSERT ON estadias_anteriores
+AFTER UPDATE OR DELETE OR INSERT ON estadias_anteriores
     FOR EACH ROW EXECUTE FUNCTION auditoria_estadias();

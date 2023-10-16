@@ -26,7 +26,6 @@ DECLARE
 	fecha_inicial date;
 	tipo_estado INTEGER;
 BEGIN
-	
 --hallar precio_noche actualizado
 	SELECT precio_noche INTO precio_por_noche FROM costos_habitacion ch WHERE
 		hotel_codigo = NEW.hotel_codigo AND nro_habitacion = NEW.nro_habitacion AND
@@ -35,10 +34,16 @@ BEGIN
 		    FROM costos_habitacion ch2 WHERE ch.hotel_codigo = ch2.hotel_codigo AND ch.nro_habitacion = ch2.nro_habitacion
 		);
 --definición de campos
+	
 	monto_finguitos :=  TRUNC(((NEW.check_out - NEW.check_in)* precio_por_noche/10));
 	fecha_inicial := NEW.check_in + INTERVAL '1 month';
-	fecha_final := NEW.check_out + INTERVAL '2 years';
-
+    fecha_final := NEW.check_out + INTERVAL '2 years';
+   
+    IF (NEW.check_out < NEW.check_in) THEN
+	    RAISE NOTICE 'La fecha de check_out no puede ser menor a la de check_in';
+	    RETURN NULL;
+    END IF;
+    
     IF (TG_OP = 'INSERT') THEN
     	--siempre tendra algún tipo estado, lo dejo con else if para explictés
     	IF (fecha_final >= CURRENT_DATE) THEN
@@ -64,36 +69,35 @@ BEGIN
         monto_finguitos,
         NOW(),
         tipo_estado);
-        
-       
         --verificar historico finguitos
 		UPDATE finguitos_usuarios SET estado = 2,  fecha_operacion = NOW()  WHERE --vencido
-			cliente_documento = NEW.cliente_documento AND fecha_fin < CURRENT_DATE;
+			cliente_documento = NEW.cliente_documento AND fecha_fin < CURRENT_DATE  AND estado = 1;
 		
     ELSEIF (TG_OP = 'UPDATE') THEN
     	--existe tupla finguitos asociado a la estadia?
     	IF EXISTS (SELECT 1 FROM finguitos_usuarios WHERE 
     			OLD.hotel_codigo = hotel_codigo AND OLD.cliente_documento = cliente_documento AND OLD.check_in = check_in) THEN
-        IF (NEW.cliente_documento = OLD.cliente_documento AND NEW.hotel_codigo = OLD.hotel_codigo ) THEN
-			UPDATE finguitos_usuarios SET 
-			check_in = NEW.check_in,
-			check_out = NEW.check_out,
-			fecha_operacion = NOW(),
-			finguitos = monto_finguitos,
-			fecha_inicio = fecha_inicial,
-			fecha_fin = fecha_final,
-			estado = 1 WHERE 
-			cliente_documento = OLD.cliente_documento AND 
-		    hotel_codigo = OLD.hotel_codigo AND 
-		    check_in = OLD.check_in;  
-		ELSE
-			RAISE NOTICE 'El cliente u hotel posee finguitos asociados';
-			ROLLBACK;
-			RETURN NULL;
+	        IF (NEW.cliente_documento = OLD.cliente_documento AND NEW.hotel_codigo = OLD.hotel_codigo ) THEN
+				UPDATE finguitos_usuarios SET 
+				check_in = NEW.check_in,
+				check_out = NEW.check_out,
+				fecha_operacion = NOW(),
+				finguitos = monto_finguitos,
+				fecha_inicio = fecha_inicial,
+				fecha_fin = fecha_final,
+				estado = 1 WHERE 
+				cliente_documento = OLD.cliente_documento AND 
+			    hotel_codigo = OLD.hotel_codigo AND 
+			    check_in = OLD.check_in;  
+			ELSE
+				RAISE NOTICE 'El cliente u hotel posee finguitos asociados';
+				ROLLBACK;
+				RETURN NULL;
+			END IF;
     	END IF;
         --verificar historico finguitos
-    	UPDATE finguitos_usuarios SET estado = 2, fecha_operacion = NOW()  WHERE --vencido
-			cliente_documento = NEW.cliente_documento AND fecha_fin < CURRENT_DATE;
+		UPDATE finguitos_usuarios SET estado = 2,  fecha_operacion = NOW()  WHERE --vencido
+			cliente_documento = OLD.cliente_documento AND fecha_fin < CURRENT_DATE AND estado = 1;
 		
     ELSEIF (TG_OP = 'DELETE') THEN 
     
@@ -107,7 +111,6 @@ BEGIN
     END IF;
    
    RETURN NEW;
-  
 END;
 $finguitos$ LANGUAGE plpgsql;
 
@@ -115,4 +118,3 @@ CREATE OR REPLACE TRIGGER finguitos
 AFTER INSERT OR UPDATE OR DELETE ON estadias_anteriores
     FOR EACH ROW EXECUTE FUNCTION finguitos();
 
-   
