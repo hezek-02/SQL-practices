@@ -1,5 +1,4 @@
-
-CREATE TABLE registro_uso (
+CREATE TABLE IF NOT EXISTS registro_uso (
     usuario TEXT NOT NULL,
     tabla name NOT NULL,
     fecha date NOT NULL,
@@ -34,15 +33,15 @@ END;
 
 $registro_operaciones$ LANGUAGE plpgsql;
 
-CREATE TRIGGER registro_operaciones
+CREATE OR REPLACE TRIGGER  registro_operaciones
 AFTER INSERT OR UPDATE OR DELETE ON estadias_anteriores
-FOR EACH ROW EXECUTE FUNCTION registro_operaciones();
+FOR EACH STATEMENT EXECUTE FUNCTION registro_operaciones();
 
-CREATE TRIGGER registro_operaciones
+CREATE OR REPLACE TRIGGER registro_operaciones
 AFTER INSERT OR UPDATE OR DELETE ON reservas_anteriores
-FOR EACH ROW EXECUTE FUNCTION registro_operaciones();
+FOR EACH STATEMENT EXECUTE FUNCTION registro_operaciones();
 
-CREATE TRIGGER registro_operaciones
+CREATE OR REPLACE TRIGGER registro_operaciones
 AFTER INSERT OR UPDATE OR DELETE ON clientes
-FOR EACH ROW EXECUTE FUNCTION registro_operaciones();
+FOR EACH STATEMENT EXECUTE FUNCTION registro_operaciones();
 

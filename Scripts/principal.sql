@@ -124,11 +124,12 @@ SELECT * FROM estadias e NATURAL JOIN costos_habitacion ch3 WHERE --La fecha exc
 		       		fecha_desde > e.check_in 		        
 --parte05
 
-
 SELECT  * FROM registro_uso
 SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
-SELECT * FROM reservas_anteriores ra  ea ORDER BY check_in  DESC
+SELECT * FROM reservas_anteriores ra   ORDER BY check_in  DESC
 SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
+
+UPDATE estadias_anteriores SET check_out='2022-12-21' WHERE hotel_codigo=6512340 
 
 
 --parte06
