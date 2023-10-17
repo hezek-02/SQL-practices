@@ -53,7 +53,7 @@ BEGIN
     	END IF;
     	--tiene estadias previas?
     	IF EXISTS (SELECT 1 FROM estadias_anteriores ea WHERE hotel_codigo = NEW.hotel_codigo AND 
-    		cliente_documento = NEW.cliente_documento AND check_in <> NEW.check_in ) THEN
+    		cliente_documento = NEW.cliente_documento AND check_in < NEW.check_in ) THEN
     		monto_finguitos :=  monto_finguitos + 5;
     	END IF;
     	--inserción nueva tupla

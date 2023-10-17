@@ -149,7 +149,7 @@ SELECT * FROM estadias_anteriores ea ORDER BY check_in  DESC
 
 INSERT INTO estadias_anteriores (hotel_codigo, nro_habitacion, 
 cliente_documento, check_in, check_out) 
-VALUES(6462572, 101, 72560288, '2045-04-08', '2050-04-25');
+VALUES(6462572, 101, 72560288, '2027-04-08', '2023-04-25');
 
 SELECT check_out - check_in FROM estadias_anteriores WHERE hotel_codigo=6462572 AND nro_habitacion=103 AND cliente_documento=72560288 AND check_in='2023-04-08';
 
