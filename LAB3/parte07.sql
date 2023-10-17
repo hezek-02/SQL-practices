@@ -103,7 +103,7 @@ BEGIN
     
 		UPDATE finguitos_usuarios SET 
 		fecha_operacion = NOW(),
-		estado = 3 WHERE --vencido
+		estado = 3 WHERE --cancelado
 		cliente_documento = OLD.cliente_documento AND 
 		hotel_codigo = OLD.hotel_codigo AND 
 		check_in = OLD.check_in;
