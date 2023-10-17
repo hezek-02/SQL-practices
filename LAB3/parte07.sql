@@ -41,6 +41,7 @@ BEGIN
    
     IF (NEW.check_out < NEW.check_in) THEN
 	    RAISE NOTICE 'La fecha de check_out no puede ser menor a la de check_in';
+	   	ROLLBACK;
 	    RETURN NULL;
     END IF;
     

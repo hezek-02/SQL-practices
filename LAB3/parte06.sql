@@ -1,7 +1,6 @@
 CREATE SEQUENCE IF NOT EXISTS logidseq  
     START WITH 1
-    INCREMENT BY 1
-    MINVALUE 1;
+    INCREMENT BY 1;
 
 CREATE TABLE IF NOT EXISTS audit_estadia (
     idop int4 DEFAULT nextval('logidseq') NOT NULL ,
