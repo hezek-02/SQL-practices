@@ -2,4 +2,5 @@ Grupo: 16
 
 Integrantes:
 	Nery Ezequiel Capó Brazeiro - CI: 5.413.213-8
-	Sofía Cabrera Ospitaleche - CI: 5.565.445-6 
+	Sofía Cabrera Ospitaleche   - CI: 5.565.445-6 
+	Juan Dovat Mello 		    - CI: 5.282.574-7		
