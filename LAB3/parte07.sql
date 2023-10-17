@@ -40,9 +40,8 @@ BEGIN
     fecha_final := NEW.check_out + INTERVAL '2 years';
    
     IF (NEW.check_out < NEW.check_in) THEN
-	    RAISE NOTICE 'La fecha de check_out no puede ser menor a la de check_in';
-	   	ROLLBACK;
-	    RETURN NULL;
+	    RAISE NOTICE 'La fecha de check_out no puede ser menor a la de check_in, no se registrará en finguitos';
+	   	RETURN NULL;
     END IF;
     
     IF (TG_OP = 'INSERT') THEN
@@ -91,8 +90,7 @@ BEGIN
 			    hotel_codigo = OLD.hotel_codigo AND 
 			    check_in = OLD.check_in;  
 			ELSE
-				RAISE NOTICE 'El cliente u hotel posee finguitos asociados';
-				ROLLBACK;
+				RAISE NOTICE 'El cliente u hotel posee finguitos asociados, no se registrará en finguitos, se violaron restricciones';
 				RETURN NULL;
 			END IF;
     	END IF;

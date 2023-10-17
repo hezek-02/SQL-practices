@@ -167,4 +167,4 @@ SELECT * FROM estadias_anteriores ea WHERE hotel_codigo = 2605099 AND
     		 
 INSERT INTO public.estadias_anteriores
 (hotel_codigo, nro_habitacion, cliente_documento, check_in, check_out)
-VALUES(2605099, 101, 56367622, '2010-12-15', '2010-12-22');
+VALUES(2605099, 101, 56367622, '2023-12-15', '2010-12-22');
